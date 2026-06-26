@@ -12,6 +12,7 @@ eleventyComputed:
 {% set volunteers = signups | signupsFor(committee.id) %}
 {% set needed = committee.openSeats or 0 %}
 {% set interested = volunteers | length %}
+{% set info = committeeDetails.details[committee.id] %}
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="{{ '/committees/' | url }}">← All committees</a>
@@ -30,12 +31,33 @@ eleventyComputed:
     </p>
   </header>
 
+  {% if info and info.purpose %}
+    <p class="charge">{{ info.purpose }}</p>
+  {% endif %}
+
   <dl class="detail-meta">
     <div><dt>Term length</dt><dd>{{ committee.term }}</dd></div>
     <div><dt>Open CECS seats</dt><dd>{{ needed }}</dd></div>
     {% if needed > 0 and committee.openSeatRole %}<div><dt>Seeking</dt><dd>{{ committee.openSeatRole }}</dd></div>{% endif %}
     {% if needed > 0 and committee.openSeatTerm %}<div><dt>Seat term</dt><dd>{{ committee.openSeatTerm }}</dd></div>{% endif %}
+    {% if info and info.reportsTo %}<div class="detail-meta-wide"><dt>Reports to</dt><dd>{{ info.reportsTo }}</dd></div>{% endif %}
   </dl>
+
+  {% if info and info.responsibilities | length %}
+    <section class="detail-duties">
+      <h2>Purpose &amp; responsibilities</h2>
+      <ul class="duties-list">
+        {% for duty in info.responsibilities %}
+          <li>{{ duty }}</li>
+        {% endfor %}
+      </ul>
+      <p class="duties-source">
+        Official duties from the
+        <a href="{{ committee.moreInfoUrl or site.committeesReferenceUrl }}" target="_blank" rel="noopener">UCF Faculty Senate committee listing ↗</a>.
+        See <a href="{{ '/how-it-works/' | url }}">how this committee fits into university governance →</a>
+      </p>
+    </section>
+  {% endif %}
 
   {% if committee.members | length %}
     <section class="detail-volunteers">

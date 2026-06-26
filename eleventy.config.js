@@ -56,6 +56,13 @@ export default function (eleventyConfig) {
     (committees || []).reduce((sum, c) => sum + (c.openSeats || 0), 0)
   );
 
+  // Committees that belong to a given governance cluster, using the per-committee
+  // `cluster` key in committeeDetails. Used by the /how-it-works/ map page.
+  eleventyConfig.addFilter("inCluster", (committees, details, clusterKey) => {
+    const map = (details && details.details) || {};
+    return (committees || []).filter((c) => map[c.id] && map[c.id].cluster === clusterKey);
+  });
+
   // Take the first n items of an array (Nunjucks' built-in `slice` chunks instead).
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 

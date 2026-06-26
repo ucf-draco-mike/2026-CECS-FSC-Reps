@@ -14,7 +14,9 @@ permalink: /committees/
   <p class="lede">
     Current College of Engineering and Computer Science representation for {{ committees.academicYear }}.
     Committees with open seats need volunteers — pick any on the
-    <a href="{{ '/signup/' | url }}">volunteer form</a>. Always confirm details against the
+    <a href="{{ '/signup/' | url }}">volunteer form</a>. Hover a card for the quick gist,
+    open it for full duties, or see <a href="{{ '/how-it-works/' | url }}">how the committees fit together</a>.
+    Always confirm details against the
     <a href="{{ site.committeesReferenceUrl }}" target="_blank" rel="noopener">official UCF Faculty Senate listing ↗</a>.
   </p>
 </section>
@@ -27,7 +29,7 @@ permalink: /committees/
   {% if openList | length %}
     <div class="card-grid">
       {% for committee in openList %}
-        {{ card(committee, signups) }}
+        {{ card(committee, signups, committeeDetails) }}
       {% endfor %}
     </div>
   {% else %}
@@ -42,7 +44,7 @@ permalink: /committees/
   </div>
   <div class="card-grid">
     {% for committee in filledList %}
-      {{ card(committee, signups) }}
+      {{ card(committee, signups, committeeDetails) }}
     {% endfor %}
   </div>
 </section>

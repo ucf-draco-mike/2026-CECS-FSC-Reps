@@ -21,6 +21,8 @@ src/
   _data/
     site.js            Global metadata (titles, contact, Formspree id, URL)
     committees.json    Committee catalog: members + open CECS seats  ← EDIT THIS
+    committeeDetails.json  Per-committee purpose, tl;dr, duties, cluster ← EDIT for content
+    governance.js      Clusters + authority chain for /how-it-works/ ← EDIT to retune map
     signups.json       GENERATED volunteer data (do not edit by hand)
     updates.json       News/share-out posts ← EDIT to post updates
     stats.js           DERIVED statistics for /stats/ (computed; do not edit)
@@ -29,6 +31,7 @@ src/
   index.njk            Home
   committees.njk       All committees (open seats + represented)
   committee.njk        Per-committee detail pages (one per committee)
+  how-it-works.njk     Governance map: how committees connect and report up
   stats.njk            Stats dashboard (representation by department, role, term…)
   signup.njk           Volunteer form (posts to Formspree)
   updates.njk          Updates feed
@@ -54,6 +57,13 @@ npm run build      # production build into _site/
   `members` (current confirmed CECS reps) and `openSeats` (vacant seats to recruit).
   Set `openSeats: 0` once a seat is filled. **Never change a committee `id`** after
   people start signing up — ids are how Formspree submissions are matched.
+- **Committee purpose / duties / tl;dr:** edit `src/_data/committeeDetails.json`, keyed by
+  the same committee `id`. `tldr` is the hover summary on cards; `purpose` and
+  `responsibilities` show on the detail page; `cluster` and `reportsTo` drive the
+  `/how-it-works/` governance map. Editing this file does **not** affect signup matching.
+- **Governance map:** the `/how-it-works/` page groups committees by the `cluster` set in
+  `committeeDetails.json`; cluster labels and the authority chain live in
+  `src/_data/governance.js`.
 - **Post an update:** add an object to the top of `posts` in `src/_data/updates.json`.
 - **Titles / contact / academic year:** edit `src/_data/site.js`.
 

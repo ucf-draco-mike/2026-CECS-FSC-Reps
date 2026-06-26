@@ -234,6 +234,58 @@ fieldset.field { border: 1px solid var(--line); border-radius: var(--radius); pa
 .stat-pill { background: var(--partial-bg); color: var(--partial); font-size: 0.8rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 999px; white-space: nowrap; }
 .multi-list { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.3rem; }
 
+/* Card tl;dr — always available to screen readers; on hover-capable, wide
+   screens it stays tucked away and reveals when the card is hovered or focused.
+   On touch / narrow screens (no hover) it is simply always visible. */
+.committee-tldr { margin: 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.45; }
+.committee-tldr::before { content: "TL;DR — "; font-weight: 700; color: var(--gold-deep); font-size: 0.7rem; letter-spacing: 0.5px; text-transform: uppercase; }
+@media (hover: hover) and (min-width: 761px) {
+  .committee-tldr {
+    max-height: 0; opacity: 0; overflow: hidden; margin: 0;
+    transition: max-height 0.2s ease, opacity 0.18s ease, margin 0.2s ease;
+  }
+  .committee-card:hover .committee-tldr,
+  .committee-card:focus-within .committee-tldr { max-height: 9rem; opacity: 1; margin: 0.1rem 0 0; }
+}
+
+/* Detail page — duties */
+.detail-meta-wide { grid-column: 1 / -1; }
+.detail-duties { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.55rem; box-shadow: var(--shadow); margin-top: 1.5rem; }
+.detail-duties h2 { margin-top: 0; font-size: 1.2rem; }
+.duties-list { padding-left: 1.2rem; margin: 0.6rem 0 0; max-width: 75ch; }
+.duties-list li { margin-bottom: 0.55rem; }
+.duties-list li::marker { color: var(--gold-deep); }
+.duties-source { font-size: 0.85rem; color: var(--ink-soft); margin: 1.1rem 0 0; padding-top: 0.9rem; border-top: 1px solid var(--line); }
+
+/* Governance flow chain (/how-it-works/) */
+.flow { display: grid; gap: 0; justify-items: center; }
+.flow-node {
+  width: 100%; max-width: 640px; background: var(--paper); border: 1px solid var(--line);
+  border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 0.95rem 1.25rem; box-shadow: var(--shadow);
+}
+.flow-node-base { border-left-color: var(--gold-deep); }
+.flow-node-title { font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+.flow-node-note { color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.15rem; }
+.flow-arrow { color: var(--ink-soft); font-size: 0.72rem; letter-spacing: 0.5px; text-transform: uppercase; padding: 0.5rem 0; }
+
+/* Governance clusters */
+.cluster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.15rem; margin-top: 1.25rem; }
+.cluster-panel { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 1.25rem 1.35rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 0.5rem; }
+.cluster-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.cluster-head h3 { margin: 0; font-size: 1.12rem; }
+.cluster-icon { color: var(--gold-deep); font-size: 1.1rem; }
+.cluster-blurb { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+.cluster-reports { margin: 0.1rem 0 0.4rem; font-size: 0.85rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 0.45rem 0.65rem; }
+.cluster-reports-label { display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.7px; color: var(--ink-soft); font-weight: 700; margin-bottom: 0.1rem; }
+.cluster-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+.cluster-item { padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); }
+.cluster-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.cluster-item-link { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; text-decoration: none; color: var(--ink); font-weight: 600; }
+.cluster-item-link:hover .cluster-item-name { color: var(--gold-deep); text-decoration: underline; }
+.cluster-item-name { font-size: 0.95rem; }
+.cluster-item .badge { font-size: 0.66rem; }
+.cluster-item-tldr { margin: 0.25rem 0 0; font-size: 0.84rem; color: var(--ink-soft); line-height: 1.4; }
+
 /* Footer — UCF black with a gold spirit stripe */
 .site-footer { background: var(--black); color: #d8d6d0; margin-top: 3rem; border-bottom: 4px solid var(--gold); }
 .footer-inner { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-block: 2rem; }

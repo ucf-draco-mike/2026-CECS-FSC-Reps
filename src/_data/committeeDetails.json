@@ -1,0 +1,321 @@
+{
+  "_note": "Editorial content for each committee, keyed by committee id (matches committees.json). 'tldr' is the short hover summary shown on cards; 'purpose' is a 1-2 sentence framing; 'responsibilities' are the official duties (sourced from the UCF Faculty Senate committee pages, https://facultysenate.ucf.edu/committees/); 'cluster' groups committees on the /how-it-works/ governance map; 'reportsTo' is the body each committee forwards its recommendations to. Editing this file does NOT affect signup matching — only committees.json ids do that.",
+  "details": {
+    "academic-calendar": {
+      "tldr": "Sets the university's academic calendar and weighs how calendar changes affect students and faculty.",
+      "purpose": "Recommends the academic calendar for the university and considers the downstream impact of any calendar change on the people it affects.",
+      "responsibilities": [
+        "Recommend the academic calendar and ensure compliance with the rules and regulations of the State of Florida and the university Board of Trustees.",
+        "Consider the impact of changes in the academic calendar on students and faculty."
+      ],
+      "cluster": "operations",
+      "reportsTo": "Faculty Senate (via the Steering Committee) and the Board of Trustees"
+    },
+    "faculty-center-advisory": {
+      "tldr": "Guides faculty teaching and learning development through the Faculty Center for Teaching and Learning.",
+      "purpose": "Advises the Faculty Center for Teaching and Learning on professional development that strengthens teaching and learning for all faculty.",
+      "responsibilities": [
+        "Support and develop faculty professional development in teaching, learning, and the scholarship of teaching for all faculty, including full-time, adjunct, and graduate teaching assistants.",
+        "Oversee and administer professional teaching development activities.",
+        "Coordinate the nomination, review, and selection of faculty fellowships and other awards for creative teaching and the innovative use of technology in teaching and learning.",
+        "Administer and review an annual assessment of the Faculty Center for Teaching and Learning's activities.",
+        "Consider and recommend to the Faculty Senate and administration regarding the needs and activities of the Faculty Center for Teaching and Learning."
+      ],
+      "cluster": "faculty",
+      "reportsTo": "The Faculty Senate and university administration"
+    },
+    "campus-safety-security": {
+      "tldr": "Recommends parking, transportation, and campus safety policies for a safer university community.",
+      "purpose": "Evaluates and recommends policies on parking, transportation, and campus safety and security that serve faculty, staff, students, and visitors.",
+      "responsibilities": [
+        "Evaluate and recommend policies and procedures on parking, transportation, and campus safety and security that foster a mutually beneficial environment for faculty, staff, students, and visitors in the university community.",
+        "Make recommendations to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The Steering Committee of the Faculty Senate"
+    },
+    "graduate-policy": {
+      "tldr": "Shapes the policies and procedures that govern graduate education and graduate students.",
+      "purpose": "Examines and recommends the policies and procedures that govern graduate education, including admissions, academic progress, and financial support.",
+      "responsibilities": [
+        "Examine existing policies and procedures and recommend new policies and procedures for graduate education, including those affecting admissions, academic progress, and financial support for graduate students.",
+        "Review all matters referred by the dean of the College of Graduate Studies.",
+        "Transmit recommendations to the dean of the College of Graduate Studies (who advises the provost) and to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "graduate",
+      "reportsTo": "The Graduate Council and the dean of the College of Graduate Studies"
+    },
+    "personnel": {
+      "tldr": "Recommends academic personnel policy, including promotion, tenure, and chair-evaluation standards.",
+      "purpose": "Studies and recommends academic personnel policy and standards, and oversees the evaluation of administrators and department chairs.",
+      "responsibilities": [
+        "Study and recommend academic personnel policy and standards, including promotion and tenure criteria.",
+        "Be responsible for procedures to evaluate administrators and department chairs and oversee such evaluations.",
+        "Consider other matters related to the professional well-being of the faculty, including academic freedom.",
+        "Make recommendations to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "faculty",
+      "reportsTo": "The Steering Committee of the Faculty Senate"
+    },
+    "research-council": {
+      "tldr": "Advises on research policy, centers, integrity, and support across the university.",
+      "purpose": "Recommends research policy to the Vice President for Research and advises on support for research activities, centers, and integrity.",
+      "responsibilities": [
+        "Recommend policies on research activities, facilities, personnel, and patents to the Vice President for the Office of Research.",
+        "Consult with and advise the Vice President for Research on stimulating and supporting research activities, including the allocation of monies invested in UCF research.",
+        "Assist in evaluating research programs and advise on new and existing research centers and institutes.",
+        "Recommend policies that foster a strong relationship between research centers, institutes, and departments.",
+        "Speak for the faculty on governmental, industrial, and other private-sector and foundation support of the university's research programs.",
+        "Review the activities of the committees dealing with human subjects, animals, copyrights, and patents in research.",
+        "Review and recommend on internal research grants and awards, and promote the responsible conduct of research.",
+        "Make recommendations to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "research",
+      "reportsTo": "The Vice President for Research and the Steering Committee of the Faculty Senate"
+    },
+    "undergraduate-policy-curriculum": {
+      "tldr": "Reviews undergraduate academic policy, degree requirements, and new or revised programs.",
+      "purpose": "Studies and recommends university-wide undergraduate academic policy and degree requirements, and reviews proposals for new and revised programs.",
+      "responsibilities": [
+        "Study, review, and recommend on undergraduate academic policies.",
+        "Study, review, and recommend on university-wide undergraduate degree requirements, including the General Education Program, foreign language requirements, admission standards, and academic honors.",
+        "Review recommendations from the University Common Program Oversight Committee on changes to the General Education Program.",
+        "Review and recommend on all proposals for new undergraduate degree programs and minors, and the elimination of existing programs, prior to Board of Trustees approval.",
+        "Review and recommend on proposals to revise existing degree programs and certificates.",
+        "Recommend on the allocation of the Equipment Fee to the dean of the College of Undergraduate Studies.",
+        "Transmit recommendations to the dean of the College of Undergraduate Studies and to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "undergraduate",
+      "reportsTo": "The dean of the College of Undergraduate Studies and the Provost"
+    },
+    "university-travel-awards": {
+      "tldr": "Sets guidelines for and awards faculty travel funding.",
+      "purpose": "Develops guidelines for faculty travel awards and recommends recipients to the Provost.",
+      "responsibilities": [
+        "Develop guidelines for travel awards to faculty.",
+        "Announce the availability of and procedures for applying for travel awards.",
+        "Solicit applications for travel awards.",
+        "Review faculty applications and recommend recipients to the Provost and Vice President for Academic Affairs."
+      ],
+      "cluster": "faculty",
+      "reportsTo": "The Provost and Vice President for Academic Affairs"
+    },
+    "admissions-standards": {
+      "tldr": "Hears undergraduate admissions exceptions and student academic appeals.",
+      "purpose": "Considers undergraduate admissions that fall below minimum standards and hears student appeals on readmission, academic standing, and late academic actions.",
+      "responsibilities": [
+        "Consider undergraduate admissions that do not meet minimum university standards and are referred by the Office of Undergraduate Admissions.",
+        "Consider undergraduate student appeals of readmission decisions or academic standing.",
+        "Consider undergraduate appeals of College of Undergraduate Studies decisions on late withdrawals, late drops, late adds, and medical withdrawals.",
+        "Consider graduate appeals of College of Graduate Studies decisions on late withdrawals, late drops, late adds, and medical withdrawals."
+      ],
+      "cluster": "undergraduate",
+      "reportsTo": "The Office of Undergraduate Admissions and the College of Undergraduate Studies"
+    },
+    "budget-administrative": {
+      "tldr": "Recommends university budget policy and administrative procedures affecting faculty.",
+      "purpose": "Evaluates and recommends policies on the university budget — especially the academic budget — and on administrative procedures that affect faculty work.",
+      "responsibilities": [
+        "Evaluate and recommend policies and procedures on the university budget, with special emphasis on the academic budget.",
+        "Make recommendations on any administrative procedure that affects faculty in the performance of their work.",
+        "Participate in the academic planning process as appropriate.",
+        "Make recommendations to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The Steering Committee of the Faculty Senate"
+    },
+    "commencement-convocation-recognitions": {
+      "tldr": "Oversees commencement and convocation practices and reviews honors, awards, and honorary degrees.",
+      "purpose": "Reviews commencement and convocation procedures and recommends on speakers, awards, honorary degrees, and other university recognitions.",
+      "responsibilities": [
+        "Examine and review commencement and convocation procedures and recommend on future ceremonies, accounting for budget implications.",
+        "Recommend to the President regarding speakers for commencements and convocations.",
+        "Recommend on the number and kinds of commencements and convocations.",
+        "Review proposals for awards, emeritus status, honorary and posthumous degrees, and other honors, and recommend to the President.",
+        "Recommend the standards and criteria for awarding honorary degrees.",
+        "Recommend criteria for and serve as the selection committee for the Distinguished Alumnus designation."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The President of the university"
+    },
+    "course-materials": {
+      "tldr": "Promotes textbook affordability and timely course-material adoption.",
+      "purpose": "Recommends procedures for textbook adoption and promotes a culture that values affordable course materials for students.",
+      "responsibilities": [
+        "Recommend to the dean of the College of Undergraduate Studies procedures to meet textbook adoption deadlines and reporting requirements.",
+        "Promote a culture that values textbook affordability.",
+        "Respect faculty expertise in choosing curriculum materials while highlighting cost-effectiveness for students.",
+        "Develop scholarship criteria, review applications, and select recipients for free course textbooks and other Bookstore awards each semester."
+      ],
+      "cluster": "undergraduate",
+      "reportsTo": "The dean of the College of Undergraduate Studies"
+    },
+    "faculty-staff-benefits": {
+      "tldr": "Reviews and improves university benefits and wellness programs for faculty and staff.",
+      "purpose": "Reviews and assesses university benefits and wellness programs and recommends improvements that align with the needs of faculty and staff.",
+      "responsibilities": [
+        "Regularly review, compare, and assess university benefits and wellness programs to ensure they meet the evolving needs of faculty and staff.",
+        "Collaborate with university stakeholders to develop and implement initiatives that improve faculty and staff benefits and well-being.",
+        "Develop and execute strategies to communicate benefit-related updates, initiatives, and resources across the university.",
+        "Report findings and recommendations on improving and expanding benefits and wellness programs to the Faculty Senate and/or President."
+      ],
+      "cluster": "faculty",
+      "reportsTo": "The Faculty Senate and/or the President"
+    },
+    "student-success-council": {
+      "tldr": "Advances programs, policies, and metrics that help UCF students succeed.",
+      "purpose": "Promotes programs, policies, and practices that help students succeed academically and personally, and advises university leaders on student success initiatives.",
+      "responsibilities": [
+        "Promote the development and implementation of programs, policies, and practices that help students succeed academically and in their personal well-being.",
+        "Advise and assist the University Student Success Steering Committee, the SVP for Student Success, the deans of Undergraduate and Graduate Studies, and related units on student success initiatives.",
+        "Review and monitor performance on state performance-based funding, preeminence, and other strategic student success metrics.",
+        "Collaborate with the Faculty Center for Teaching and Learning and the Center for Distributed Learning on professional development that supports student success.",
+        "Serve as an advisory and recommending body to the Faculty Senate on student success strategies, and collaborate with professional advising offices across UCF."
+      ],
+      "cluster": "students",
+      "reportsTo": "The University Student Success Steering Committee and the Faculty Senate"
+    },
+    "general-undergraduate-requirements": {
+      "tldr": "Monitors university-wide undergraduate requirements like General Education and diversity.",
+      "purpose": "Monitors university-wide undergraduate curriculum requirements and recommends on changes to General Education, diversity, and related requirements.",
+      "responsibilities": [
+        "Monitor university-wide undergraduate curriculum requirements such as the General Education Program, diversity, the Gordon Rule, and foreign language proficiency, and review changes to them.",
+        "Review and recommend to the dean of the College of Undergraduate Studies on courses and syllabi submitted to meet the university diversity requirement.",
+        "Make recommendations to the Undergraduate Policy and Curriculum Committee on changes to the General Education Program.",
+        "Make recommendations to the Undergraduate Course Review Committee on course proposals related to the General Education Program."
+      ],
+      "cluster": "undergraduate",
+      "reportsTo": "The Undergraduate Policy & Curriculum Committee and the dean of the College of Undergraduate Studies"
+    },
+    "graduate-appeals": {
+      "tldr": "Hears graduate student petitions and appeals for exceptions to graduate policy.",
+      "purpose": "Hears petitions and appeals for variances from graduate policies and forwards recommendations to the dean of the College of Graduate Studies.",
+      "responsibilities": [
+        "Hear petitions for variances from established policies governing post-baccalaureate, certificate, or graduate degrees at the program, college, or university level.",
+        "Hear other cases referred by the dean of the College of Graduate Studies, including appeals of adverse admissions and administrative decisions and appeals under The Golden Rule.",
+        "Hear all requests from graduate program directors for exceptions to graduate policies and procedures.",
+        "Identify graduate program practices with policy implications and refer them to the dean of the College of Graduate Studies.",
+        "Review all matters referred by the Graduate Council; conclusions are recommendations to the dean, who makes the final decision."
+      ],
+      "cluster": "graduate",
+      "reportsTo": "The dean of the College of Graduate Studies"
+    },
+    "graduate-curriculum": {
+      "tldr": "Reviews graduate course and program curriculum changes.",
+      "purpose": "Reviews curricular changes for graduate education — courses, tracks, options, and certificate programs — and recommends to the dean of the College of Graduate Studies.",
+      "responsibilities": [
+        "Review curricular issues related to graduate education and recommend to the dean of the College of Graduate Studies.",
+        "Review changes to existing graduate programs, such as hours and thesis/non-thesis options.",
+        "Review new tracks or options for existing graduate programs and the deletion of tracks or options.",
+        "Review new certificate programs and the deletion of existing certificate programs.",
+        "Review all requests for additions, revisions, and deletions of graduate and special-topic courses.",
+        "Review all matters referred by the dean of the College of Graduate Studies."
+      ],
+      "cluster": "graduate",
+      "reportsTo": "The dean of the College of Graduate Studies"
+    },
+    "graduate-program-review-awards": {
+      "tldr": "Reviews graduate programs and selects graduate teaching, thesis, and dissertation awards.",
+      "purpose": "Reviews graduate programs as part of the program review cycle and selects recipients for graduate student and teaching awards.",
+      "responsibilities": [
+        "Review graduate programs in the program review cycle, identify factors that promote quality, and update faculty status for participating faculty; report findings to the dean of the College of Graduate Studies.",
+        "Review proposals for new graduate programs and the deletion of existing programs submitted by the dean of the College of Graduate Studies.",
+        "Review nominees for graduate student awards in teaching, thesis, and dissertation, and for the Excellence in Graduate Teaching Award, and recommend to the dean."
+      ],
+      "cluster": "graduate",
+      "reportsTo": "The dean of the College of Graduate Studies"
+    },
+    "information-technology": {
+      "tldr": "Advises on faculty information-technology needs and university IT policy.",
+      "purpose": "Assesses faculty information-technology needs and advises the Vice President for Information Technologies on resources that enhance teaching, learning, research, and service.",
+      "responsibilities": [
+        "Assist in determining and evaluating faculty information technology needs and review general policies in this area.",
+        "Review changes to educational media and communications recommended by the Vice President for Information Technologies and Resources.",
+        "Advise the Vice President for Information Technologies and Resources on developing IT resources that enhance teaching, learning, research, and service.",
+        "Make recommendations to the Steering Committee of the Faculty Senate."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The Vice President for Information Technologies and the Steering Committee of the Faculty Senate"
+    },
+    "library-advisory": {
+      "tldr": "Connects faculty with the Libraries and advises Library administration.",
+      "purpose": "Facilitates communication between the UCF Libraries and faculty and advises Library administration.",
+      "responsibilities": [
+        "Facilitate communication between the Libraries and their academic clientele.",
+        "Act as advocates of the Libraries in university-wide decision-making groups.",
+        "Act as an advisory council to the Libraries administration."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The UCF Libraries administration"
+    },
+    "strategic-planning-council": {
+      "tldr": "Helps develop and update the university's strategic and academic plan.",
+      "purpose": "Advises and assists the Provost in developing and updating the university's strategic plan and academic plan.",
+      "responsibilities": [
+        "Advise and assist the Provost and Vice President for Academic Affairs in developing and updating the university's strategic plan.",
+        "Recommend policies that support strategic planning, including academic planning, institutional effectiveness, accountability, budget planning, and student services.",
+        "Recommend the university's academic plan and any budget or academic actions needed to support it to the Provost."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The Provost and Vice President for Academic Affairs"
+    },
+    "undergraduate-course-review": {
+      "tldr": "Reviews all undergraduate course additions, revisions, and deletions.",
+      "purpose": "Reviews undergraduate course actions and special-topics requests and recommends them to the dean of the College of Undergraduate Studies.",
+      "responsibilities": [
+        "Review all undergraduate course additions, revisions, deletions, and special-topics requests, and transmit recommendations to the dean of the College of Undergraduate Studies.",
+        "Review recommendations from the Undergraduate Common Program Oversight Committee on course proposals related to the General Education Program.",
+        "Recommend on the allocation of the Material and Supplies Fee to the dean of the College of Undergraduate Studies."
+      ],
+      "cluster": "undergraduate",
+      "reportsTo": "The dean of the College of Undergraduate Studies"
+    },
+    "athletics-advisory": {
+      "tldr": "Safeguards academic integrity and student-athlete welfare in UCF Athletics.",
+      "purpose": "Provides academic oversight of University Athletics and safeguards student-athlete welfare, academic progress, and NCAA compliance.",
+      "responsibilities": [
+        "Nurture and foster academic integrity through oversight of academic matters related to University Athletics.",
+        "Supervise the university's relationship with its athletic conference and the NCAA and ensure compliance with their rules and regulations.",
+        "Review the academic advisement, retention, and admissions of athletes.",
+        "Recommend to the Faculty Senate policies that ensure the academic integrity of athletic programs.",
+        "Serve as an advisory body on policies that relate to student-athlete welfare and academic progress."
+      ],
+      "cluster": "students",
+      "reportsTo": "The Faculty Senate and University Athletics"
+    },
+    "university-honors": {
+      "tldr": "Recommends policy and curriculum for the Burnett Honors College.",
+      "purpose": "Recommends fundamental policy, curriculum, and student-affairs decisions for the Burnett Honors College.",
+      "responsibilities": [
+        "Consider and recommend fundamental policies and procedures for the Burnett Honors College, including its direction, programs, requirements, faculty participation, and curriculum.",
+        "Recommend to the dean of the Burnett Honors College on faculty and student awards, scholarships, and other benefits.",
+        "Recommend to the dean on disciplinary matters, including the removal of a student from the program."
+      ],
+      "cluster": "students",
+      "reportsTo": "The dean of the Burnett Honors College"
+    },
+    "university-master-planning": {
+      "tldr": "Reviews campus land use, facilities planning, and aesthetics.",
+      "purpose": "Reviews long- and short-range campus land use, facilities planning, and aesthetics, and advises the President on campus development.",
+      "responsibilities": [
+        "Review short- and long-range issues related to land use, facilities planning, and future campus development, including the protection of natural resources.",
+        "Recommend to the President on aesthetics and suitability for minor projects and modifications to the campus landscape, utilities, and building exteriors.",
+        "Review signage, site furniture, public art, and some temporary installations.",
+        "Serve as a clearinghouse for communication to the campus community."
+      ],
+      "cluster": "operations",
+      "reportsTo": "The President of the university"
+    },
+    "university-promotion-tenure": {
+      "tldr": "Conducts university-level review of faculty promotion and tenure cases.",
+      "purpose": "Conducts the university-level review of faculty promotion and tenure cases and helps maintain consistent university-wide P&T standards.",
+      "responsibilities": [
+        "Review promotion and tenure recommendations forwarded from the colleges for consistency with university standards.",
+        "Make recommendations on candidates to the Provost and Vice President for Academic Affairs.",
+        "Advise on university-wide promotion and tenure criteria and procedures, in coordination with the Personnel Committee's policy work."
+      ],
+      "cluster": "faculty",
+      "reportsTo": "The Provost and Vice President for Academic Affairs"
+    }
+  }
+}

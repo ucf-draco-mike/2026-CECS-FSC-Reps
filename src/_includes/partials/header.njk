@@ -14,6 +14,7 @@
     <nav id="primary-nav" class="site-nav" aria-label="Primary">
       <a href="{{ '/' | url }}"{% if page.url == ('/' | url) %} aria-current="page"{% endif %}>Home</a>
       <a href="{{ '/committees/' | url }}"{% if '/committees/' in page.url %} aria-current="page"{% endif %}>Committees</a>
+      <a href="{{ '/how-it-works/' | url }}"{% if '/how-it-works/' in page.url %} aria-current="page"{% endif %}>How it works</a>
       <a href="{{ '/stats/' | url }}"{% if '/stats/' in page.url %} aria-current="page"{% endif %}>Stats</a>
       <a href="{{ '/updates/' | url }}"{% if '/updates/' in page.url %} aria-current="page"{% endif %}>Updates</a>
       <a href="{{ '/about/' | url }}"{% if '/about/' in page.url %} aria-current="page"{% endif %}>About</a>
