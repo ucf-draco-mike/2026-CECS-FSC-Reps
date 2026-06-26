@@ -45,8 +45,17 @@ extraScript: /assets/js/signup.js
 
   <div class="field-row">
     <div class="field">
-      <label for="department">Department / School</label>
-      <input type="text" id="department" name="department" placeholder="e.g. Computer Science" />
+      <label for="department">Unit</label>
+      <select id="department" name="department">
+        <option value="" selected>Select your unit…</option>
+        <option value="Civil, Environmental, and Construction Engineering (CECE)">Civil, Environmental, and Construction Engineering (CECE)</option>
+        <option value="Computer Science (CS)">Computer Science (CS)</option>
+        <option value="Electrical and Computer Engineering (ECE)">Electrical and Computer Engineering (ECE)</option>
+        <option value="Industrial Engineering and Management Systems (IEMS)">Industrial Engineering and Management Systems (IEMS)</option>
+        <option value="Materials Science and Engineering (MSE)">Materials Science and Engineering (MSE)</option>
+        <option value="Mechanical and Aerospace Engineering (MAE)">Mechanical and Aerospace Engineering (MAE)</option>
+        <option value="School of Modeling, Simulation, and Training (SMST)">School of Modeling, Simulation, and Training (SMST)</option>
+      </select>
     </div>
     <div class="field">
       <label for="rank">Rank / title</label>
