@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+title: Updates
+description: News and share-outs for CECS Faculty Senate committee service.
+permalink: /updates/
+---
+<section class="page-head">
+  <h1>Updates</h1>
+  <p class="lede">News, open seats, and share-outs for CECS faculty through the {{ committees.academicYear }} year.</p>
+</section>
+
+<div class="updates">
+  {% for post in updates.posts %}
+    <article class="update">
+      <p class="update-date">{{ post.date | readableDate }}</p>
+      <h2>{{ post.title }}</h2>
+      <div class="update-body">{{ post.body | safe }}</div>
+    </article>
+  {% endfor %}
+</div>

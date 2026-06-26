@@ -1,0 +1,41 @@
+{% macro card(committee, signups) %}
+  {% set volunteers = signups | signupsFor(committee.id) %}
+  {% set needed = committee.openSeats or 0 %}
+  {% set interested = volunteers | length %}
+  <article class="committee-card{% if needed > 0 %} is-open{% endif %}" id="{{ committee.id }}">
+    <header class="committee-card-head">
+      <h3><a href="{{ ['/committees/', committee.id, '/'] | join | url }}">{{ committee.name }}</a></h3>
+      {% if needed > 0 %}
+        {% if interested >= needed %}
+          <span class="badge badge-partial">{{ interested }} interested</span>
+        {% elif interested > 0 %}
+          <span class="badge badge-partial">{{ interested }}/{{ needed }} interested</span>
+        {% else %}
+          <span class="badge badge-open">{{ needed }} seat{{ 's' if needed != 1 }} open</span>
+        {% endif %}
+      {% else %}
+        <span class="badge badge-filled">Represented</span>
+      {% endif %}
+    </header>
+    <dl class="committee-meta">
+      <div><dt>Term</dt><dd>{{ committee.term }}</dd></div>
+      {% if needed > 0 and committee.openSeatRole %}<div><dt>Seeking</dt><dd>{{ committee.openSeatRole }}</dd></div>{% endif %}
+    </dl>
+    {% if committee.members | length %}
+      <p class="volunteers"><span class="volunteers-label">Current CECS reps:</span>
+        {% for m in committee.members %}<span class="volunteer-chip">{{ m.name }}{% if m.department %} <small>({{ m.department }})</small>{% endif %}</span>{% endfor %}
+      </p>
+    {% endif %}
+    {% if interested %}
+      <p class="volunteers volunteers-interested"><span class="volunteers-label">Volunteered:</span>
+        {% for v in volunteers %}<span class="volunteer-chip chip-interested">{{ v.name }}{% if v.department %} <small>({{ v.department }})</small>{% endif %}</span>{% endfor %}
+      </p>
+    {% endif %}
+    <p class="committee-actions">
+      {% if needed > 0 %}
+        <a class="btn btn-small" href="{{ ['/signup/?committee=', committee.id] | join | url }}">Volunteer</a>
+      {% endif %}
+      <a class="link" href="{{ ['/committees/', committee.id, '/'] | join | url }}">Details →</a>
+    </p>
+  </article>
+{% endmacro %}

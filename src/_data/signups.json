@@ -1,0 +1,6 @@
+{
+  "_note": "GENERATED FILE — do not edit by hand. The 'Sync Formspree submissions' GitHub Action overwrites this with volunteer data pulled from the Formspree read-only API. byCommittee maps a committee id to the list of public volunteer entries (name + department only; no emails).",
+  "generatedAt": null,
+  "totalSubmissions": 0,
+  "byCommittee": {}
+}

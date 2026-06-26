@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+{% from "partials/committee-card.njk" import card %}
+{% set openList = committees.committees | openCommittees %}
+{% set openSeats = committees.committees | totalOpenSeats %}
+
+<section class="hero">
+  <p class="eyebrow">{{ site.college }} · {{ site.academicYear }}</p>
+  <h1>Help shape UCF. Represent CECS on a Faculty Senate committee.</h1>
+  <p class="lede">
+    Faculty Senate committees decide on curriculum, budget, research policy, promotion
+    and tenure, technology, and more. When CECS shows up, engineering and computer
+    science perspectives shape those decisions. Browse the committees below and add
+    your name — most ask for only a few hours a semester.
+  </p>
+  <p class="hero-actions">
+    <a class="btn btn-large" href="{{ '/signup/' | url }}">Volunteer now</a>
+    <a class="btn btn-large btn-ghost" href="{{ '/committees/' | url }}">Browse committees</a>
+  </p>
+  <p class="hero-stat">
+    <strong>{{ committees.committees | length }}</strong> committees ·
+    <strong>{{ openSeats }}</strong> open CECS seat{{ 's' if openSeats != 1 }} across
+    <strong>{{ openList | length }}</strong> committee{{ 's' if openList | length != 1 }}
+  </p>
+</section>
+
+<section class="band">
+  <h2>Why serve?</h2>
+  <div class="cols-3">
+    <div>
+      <h3>Have a voice</h3>
+      <p>Curriculum, calendar, budget, IT, and P&amp;T policy all run through these committees. Representation means CECS is in the room.</p>
+    </div>
+    <div>
+      <h3>Low lift, real impact</h3>
+      <p>Most committees meet monthly or a few times a semester. It's one of the highest-leverage forms of university service.</p>
+    </div>
+    <div>
+      <h3>Build your record</h3>
+      <p>University-level service strengthens your annual review and promotion case while growing your network across colleges.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>How it works</h2>
+  </div>
+  <ol class="steps">
+    <li><strong>Browse</strong> the committees and find one that fits your interests and schedule.</li>
+    <li><strong>Volunteer</strong> with the short form — pick one or more committees.</li>
+    <li><strong>Get matched.</strong> The CECS rep coordinates nominations with the Faculty Senate Committee on Committees.</li>
+    <li><strong>Stay informed.</strong> Check the <a href="{{ '/updates/' | url }}">Updates</a> page through the year for news and openings.</li>
+  </ol>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Committees needing CECS reps</h2>
+    <a class="link" href="{{ '/committees/' | url }}">See all {{ committees.committees | length }} →</a>
+  </div>
+  {% if openList | length %}
+    <div class="card-grid">
+      {% for committee in openList | limit(6) %}
+        {{ card(committee, signups) }}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">Every committee currently has a CECS volunteer — thank you! You can still <a href="{{ '/signup/' | url }}">add your name</a> as a backup.</p>
+  {% endif %}
+</section>
