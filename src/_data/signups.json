@@ -1,24 +1,66 @@
 {
   "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department are stored (no emails).",
-  "generatedAt": "2026-06-26T19:59:37.728Z",
-  "totalSubmissions": 6,
+  "generatedAt": "2026-06-26T20:58:17.794Z",
+  "totalSubmissions": 10,
   "byCommittee": {
+    "admissions-standards": [
+      {
+        "name": "Wayesh Qarony",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "budget-administrative": [
+      {
+        "name": "Wayesh Qarony",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "campus-safety-security": [
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
     "commencement-convocation-recognitions": [
       {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
       }
     ],
+    "course-materials": [
+      {
+        "name": "Sonali Das",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
     "faculty-center-advisory": [
       {
         "name": "Hansen Mansy",
         "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Sonali Das",
+        "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "faculty-staff-benefits": [
       {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
+      },
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "general-undergraduate-requirements": [
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "graduate-appeals": [
@@ -31,6 +73,10 @@
       {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
+      },
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "graduate-policy": [
@@ -41,6 +87,10 @@
       {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
+      },
+      {
+        "name": "Hatem Abou-Senna",
+        "department": "Civil, Environmental, and Construction Engineering (CECE)"
       },
       {
         "name": "MENGXIN ZHENG",
@@ -59,6 +109,16 @@
       {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
+      },
+      {
+        "name": "Hatem Abou-Senna",
+        "department": "Civil, Environmental, and Construction Engineering (CECE)"
+      }
+    ],
+    "information-technology": [
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "personnel": [
@@ -75,18 +135,66 @@
       {
         "name": "Saikat Dey",
         "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Wayesh Qarony",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "strategic-planning-council": [
+      {
+        "name": "Hatem Abou-Senna",
+        "department": "Civil, Environmental, and Construction Engineering (CECE)"
+      }
+    ],
+    "undergraduate-course-review": [
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Sonali Das",
+        "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "undergraduate-policy-curriculum": [
       {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
         "name": "Shahana Ibrahim",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Sonali Das",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "university-honors": [
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "university-promotion-tenure": [
+      {
+        "name": "Wayesh Qarony",
         "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "university-travel-awards": [
       {
+        "name": "Hatem Abou-Senna",
+        "department": "Civil, Environmental, and Construction Engineering (CECE)"
+      },
+      {
         "name": "MENGXIN ZHENG",
         "department": "Computer Science (CS)"
+      },
+      {
+        "name": "Saleem Sahawneh",
+        "department": "Electrical and Computer Engineering (ECE)"
       }
     ]
   }
