@@ -187,10 +187,10 @@ section { margin-block: 2.5rem; }
 .field { margin-bottom: 1.25rem; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .field label, .field legend { display: block; font-weight: 700; margin-bottom: 0.35rem; }
-.field input[type="text"], .field input[type="email"], .field textarea {
+.field input[type="text"], .field input[type="email"], .field select, .field textarea {
   width: 100%; padding: 0.6rem 0.7rem; border: 1px solid #c9c6bd; border-radius: 8px; font: inherit; background: #fff;
 }
-.field input:focus, .field textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
 .req { color: var(--open); }
 .hint { font-size: 0.82rem; color: var(--ink-soft); margin: 0.3rem 0 0; }
 fieldset.field { border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; }
