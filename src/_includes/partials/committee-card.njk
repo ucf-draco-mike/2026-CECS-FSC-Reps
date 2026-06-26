@@ -1,7 +1,8 @@
-{% macro card(committee, signups) %}
+{% macro card(committee, signups, details) %}
   {% set volunteers = signups | signupsFor(committee.id) %}
   {% set needed = committee.openSeats or 0 %}
   {% set interested = volunteers | length %}
+  {% set info = details.details[committee.id] if details else null %}
   <article class="committee-card{% if needed > 0 %} is-open{% endif %}" id="{{ committee.id }}">
     <header class="committee-card-head">
       <h3><a href="{{ ['/committees/', committee.id, '/'] | join | url }}">{{ committee.name }}</a></h3>
@@ -17,6 +18,9 @@
         <span class="badge badge-filled">Represented</span>
       {% endif %}
     </header>
+    {% if info and info.tldr %}
+      <p class="committee-tldr">{{ info.tldr }}</p>
+    {% endif %}
     <dl class="committee-meta">
       <div><dt>Term</dt><dd>{{ committee.term }}</dd></div>
       {% if needed > 0 and committee.openSeatRole %}<div><dt>Seeking</dt><dd>{{ committee.openSeatRole }}</dd></div>{% endif %}

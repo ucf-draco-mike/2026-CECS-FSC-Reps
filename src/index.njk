@@ -64,7 +64,7 @@ title: Home
   {% if openList | length %}
     <div class="card-grid">
       {% for committee in openList | limit(6) %}
-        {{ card(committee, signups) }}
+        {{ card(committee, signups, committeeDetails) }}
       {% endfor %}
     </div>
   {% else %}

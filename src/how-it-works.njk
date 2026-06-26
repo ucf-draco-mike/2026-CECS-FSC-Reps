@@ -1,0 +1,92 @@
+---
+layout: layouts/base.njk
+title: How committees work together
+description: How UCF Faculty Senate committees connect, who they report to, and how recommendations bubble up to the Provost, President, and Board of Trustees.
+permalink: /how-it-works/
+---
+<section class="page-head">
+  <h1>How the committees work together</h1>
+  <p class="lede">
+    UCF's Faculty Senate committees aren't islands. Each one does focused work, then
+    forwards recommendations up a chain — through the Senate's Steering Committee, to the
+    Provost, President, and ultimately the Board of Trustees. Here's how the pieces fit,
+    and where {{ site.college }} aims to have a voice.
+  </p>
+</section>
+
+<section class="flow" aria-label="Chain of authority">
+  <h2 class="sr-only">Chain of authority</h2>
+  {% for node in governance.flow %}
+    <div class="flow-node{% if loop.last %} flow-node-base{% endif %}">
+      <div class="flow-node-title">{{ node.title }}</div>
+      <div class="flow-node-note">{{ node.note }}</div>
+    </div>
+    {% if not loop.last %}
+      <div class="flow-arrow" aria-hidden="true">▲ recommendations rise · direction sets ▼</div>
+    {% endif %}
+  {% endfor %}
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Committees by domain</h2>
+    <span class="muted">Hover a card for the gist · click for full duties</span>
+  </div>
+  <p class="category-blurb">
+    Committees cluster into a handful of domains. Within a cluster they hand work to one
+    another and roll up to a shared dean, vice president, or council before reaching the
+    Senate. The arrows in each panel show where that cluster ultimately reports.
+  </p>
+
+  <div class="cluster-grid">
+    {% for cluster in governance.clusters %}
+      {% set members = committees.committees | inCluster(committeeDetails, cluster.key) %}
+      {% if members | length %}
+        <article class="cluster-panel">
+          <header class="cluster-head">
+            <span class="cluster-icon" aria-hidden="true">{{ cluster.icon }}</span>
+            <h3>{{ cluster.label }}</h3>
+            <span class="muted">{{ members | length }} committee{{ 's' if members | length != 1 }}</span>
+          </header>
+          <p class="cluster-blurb">{{ cluster.blurb }}</p>
+          <p class="cluster-reports"><span class="cluster-reports-label">Bubbles up to</span> {{ cluster.reportsTo }}</p>
+          <ul class="cluster-list">
+            {% for committee in members %}
+              {% set info = committeeDetails.details[committee.id] %}
+              {% set needed = committee.openSeats or 0 %}
+              <li class="cluster-item">
+                <a class="cluster-item-link" href="{{ ['/committees/', committee.id, '/'] | join | url }}">
+                  <span class="cluster-item-name">{{ committee.name }}</span>
+                  {% if needed > 0 %}<span class="badge badge-open">{{ needed }} open</span>{% else %}<span class="badge badge-filled">Rep'd</span>{% endif %}
+                </a>
+                {% if info and info.tldr %}<p class="cluster-item-tldr">{{ info.tldr }}</p>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band">
+  <h2>Reading the map</h2>
+  <div class="cols-3">
+    <div>
+      <h3>Committees specialize</h3>
+      <p>Each committee owns a narrow slice — one handles graduate appeals, another the academic calendar — so decisions get expert attention before they move.</p>
+    </div>
+    <div>
+      <h3>Work rolls up</h3>
+      <p>Recommendations flow to a dean, VP, or council, then to the Faculty Senate's Steering Committee, and on to the Provost, President, and Board of Trustees.</p>
+    </div>
+    <div>
+      <h3>Representation compounds</h3>
+      <p>A CECS voice on a committee shapes what rises through the whole chain. Empty seats mean engineering and computer science perspectives go unheard.</p>
+    </div>
+  </div>
+  <p class="hero-actions">
+    <a class="btn" href="{{ '/committees/' | url }}">Browse all committees</a>
+    <a class="btn btn-ghost" href="{{ '/signup/' | url }}">Volunteer for a seat</a>
+  </p>
+</section>
