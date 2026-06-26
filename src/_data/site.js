@@ -23,6 +23,9 @@ export default {
   // Official UCF Faculty Senate committees reference.
   committeesReferenceUrl: "https://facultysenate.ucf.edu/committees/",
 
+  // UCF Provost's committees page (university committees beyond the Faculty Senate).
+  provostCommitteesUrl: "https://provost.ucf.edu/committees/",
+
   // Base URL of the deployed site (used for canonical/meta tags). Update after
   // the first Pages deploy if you use a custom domain.
   url: "https://ucf-draco-mike.github.io/2026-CECS-FSC-Reps",
