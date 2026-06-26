@@ -23,11 +23,13 @@ src/
     committees.json    Committee catalog: members + open CECS seats  ← EDIT THIS
     signups.json       GENERATED volunteer data (do not edit by hand)
     updates.json       News/share-out posts ← EDIT to post updates
+    stats.js           DERIVED statistics for /stats/ (computed; do not edit)
   _includes/           Layouts and partials (base, header, footer, committee card)
   assets/              CSS + JS
   index.njk            Home
   committees.njk       All committees (open seats + represented)
   committee.njk        Per-committee detail pages (one per committee)
+  stats.njk            Stats dashboard (representation by department, role, term…)
   signup.njk           Volunteer form (posts to Formspree)
   updates.njk          Updates feed
   about.njk            About / privacy
@@ -54,6 +56,13 @@ npm run build      # production build into _site/
   people start signing up — ids are how Formspree submissions are matched.
 - **Post an update:** add an object to the top of `posts` in `src/_data/updates.json`.
 - **Titles / contact / academic year:** edit `src/_data/site.js`.
+
+> **Stats page** (`/stats/`) is fully automatic. `src/_data/stats.js` derives
+> everything — seats by department, role and term-length breakdowns, a term-renewal
+> timeline, and faculty serving on multiple committees — from `committees.json` and
+> `signups.json`. It rebuilds on every change to those files; there is nothing to edit.
+> Department names are canonicalized there (e.g. "… and …" → "… & …") so spelling
+> variants in the catalog roll up into a single department.
 
 > ⚠️ The committee data was seeded from the 2026–2027 CECS Committee Vacancies sheet.
 > Verify names, terms, and seat counts against the official list:
