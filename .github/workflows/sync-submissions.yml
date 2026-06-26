@@ -1,0 +1,47 @@
+name: Sync Formspree submissions
+
+on:
+  # Twice daily (06:00 and 18:00 UTC). Adjust as needed.
+  schedule:
+    - cron: "0 6,18 * * *"
+  # Run on demand from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Pull submissions from Formspree
+        run: node scripts/sync-formspree.mjs
+        env:
+          FORMSPREE_API_KEY: ${{ secrets.FORMSPREE_API_KEY }}
+          FORMSPREE_FORM: ${{ vars.FORMSPREE_FORM || 'xojoddwa' }}
+      - name: Commit updated signups (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- src/_data/signups.json; then
+            echo "No changes to signups.json."
+          else
+            git add src/_data/signups.json
+            git commit -m "chore: sync Formspree submissions [skip ci]"
+            git push origin HEAD:main
+          fi
+
+  # Rebuild and redeploy the site with the refreshed data.
+  deploy:
+    needs: sync
+    uses: ./.github/workflows/deploy.yml

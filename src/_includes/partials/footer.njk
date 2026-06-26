@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>{{ site.title }}</strong>
+      <p>{{ site.college }}<br />{{ site.university }}</p>
+    </div>
+    <div>
+      <p class="footer-links">
+        <a href="{{ '/committees/' | url }}">Committees</a>
+        <a href="{{ '/signup/' | url }}">Volunteer</a>
+        <a href="{{ '/updates/' | url }}">Updates</a>
+        <a href="{{ site.committeesReferenceUrl }}" rel="noopener" target="_blank">UCF Faculty Senate ↗</a>
+      </p>
+      <p class="footer-contact">
+        Questions? <a href="mailto:{{ site.contactEmail }}">{{ site.contactName }}</a>
+      </p>
+      {% if signups.generatedAt %}
+        <p class="footer-meta">Volunteer data last updated {{ signups.generatedAt | readableDate }}.</p>
+      {% endif %}
+    </div>
+  </div>
+</footer>

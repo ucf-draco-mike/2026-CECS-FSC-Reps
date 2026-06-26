@@ -1,0 +1,273 @@
+{
+  "_note": "CECS seats on UCF Faculty Senate committees, derived from the 2026-2027 CECS Committee Vacancies sheet. 'members' are current/confirmed CECS reps; 'openSeats' is how many CECS seats are vacant and being recruited. Verify against the official UCF Faculty Senate listing: https://facultysenate.ucf.edu/committees/ . Do not change a committee 'id' once people start signing up — ids are how Formspree signups are matched.",
+  "academicYear": "2026-2027",
+  "committees": [
+    {
+      "id": "academic-calendar",
+      "name": "Academic Calendar Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Adan Vela", "department": "Industrial Engineering & Management Systems", "role": "Faculty Representative", "term": "2026-2028", "note": "To be confirmed" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "faculty-center-advisory",
+      "name": "Faculty Center for Teaching and Learning Advisory Committee",
+      "term": "3-year term",
+      "openSeats": 1,
+      "openSeatRole": "Faculty Representative",
+      "openSeatTerm": "2026-2029",
+      "members": [
+        { "name": "Mike Borowczak", "department": "Electrical & Computer Engineering", "role": "Senate Representative", "term": "2024-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "campus-safety-security",
+      "name": "Faculty Senate Campus Safety and Security Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Shruti Vyas", "department": "Materials Science & Engineering", "role": "Faculty Representative", "term": "2026-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "graduate-policy",
+      "name": "Graduate Policy Committee",
+      "term": "3-year term",
+      "openSeats": 1,
+      "openSeatRole": "Senate Representative",
+      "openSeatTerm": "2026-2029",
+      "members": [],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "personnel",
+      "name": "Personnel Committee",
+      "term": "2-year term",
+      "openSeats": 1,
+      "openSeatTerm": "2026-2028",
+      "members": [],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "research-council",
+      "name": "Research Council",
+      "term": "3-year term",
+      "openSeats": 1,
+      "openSeatRole": "Faculty Representative",
+      "openSeatTerm": "2026-2029",
+      "members": [
+        { "name": "Hansen Mansy", "department": "Mechanical and Aerospace Engineering", "role": "Faculty Representative", "term": "2026-2029" },
+        { "name": "Steven Duranceau", "department": "Civil, Environmental, and Construction Engineering", "role": "Senate Representative", "term": "2024-2027", "note": "Vice Chair" },
+        { "name": "Soheil Sabri", "department": "Modeling and Simulation Graduate Program", "role": "Senate Representative", "term": "2025-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "undergraduate-policy-curriculum",
+      "name": "Undergraduate Policy and Curriculum Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Sumanta Pattanaik", "department": "Computer Science", "role": "Faculty Representative", "term": "2026-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "university-travel-awards",
+      "name": "University Travel Awards Committee",
+      "term": "2-year term",
+      "openSeats": 1,
+      "openSeatTerm": "2026-2028",
+      "members": [],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "admissions-standards",
+      "name": "Admissions and Standards Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Sudeshna Pal", "department": "Mechanical and Aerospace Engineering", "role": "Faculty Representative", "term": "2025-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "budget-administrative",
+      "name": "Budget and Administrative Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Alessandro Fascetti", "department": "Civil, Environmental, and Construction Engineering", "role": "Senate Representative", "term": "2026-2028" },
+        { "name": "Dennis Filler", "department": "Civil, Environmental, and Construction Engineering", "role": "Senate Representative", "term": "2026-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "commencement-convocation-recognitions",
+      "name": "Commencement, Convocation, and Recognitions Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Ahmad Elshennawy", "department": "Industrial Engineering & Management Systems", "role": "Senate Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "course-materials",
+      "name": "Course Materials Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Sumanta Pattanaik", "department": "Computer Science", "role": "Senate Representative", "term": "2026-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "faculty-staff-benefits",
+      "name": "Faculty and Staff Benefits Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Hatem Abou-Senna", "department": "Civil, Environmental & Construction Engineering", "role": "Faculty Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "student-success-council",
+      "name": "Faculty Senate Student Success Council",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Tian Tian", "department": "Mechanical and Aerospace Engineering", "role": "Senate Representative", "term": "2026-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "general-undergraduate-requirements",
+      "name": "General Undergraduate Requirements Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Woo Hyoung Lee", "department": "Civil, Environmental & Construction Engineering", "role": "Faculty Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "graduate-appeals",
+      "name": "Graduate Appeals Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Aman Behal", "department": "Electrical & Computer Engineering", "role": "Senate Representative", "term": "2024-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "graduate-curriculum",
+      "name": "Graduate Curriculum Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Kelly Kibler", "department": "Civil, Environmental & Construction Engineering", "role": "Faculty Representative", "term": "2024-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "graduate-program-review-awards",
+      "name": "Graduate Program Review and Awards Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Ahmad Elshennawy", "department": "Industrial Engineering & Management Systems", "role": "Senate Representative", "term": "2024-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "information-technology",
+      "name": "Information Technology Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Yogesh Rawat", "department": "Computer Science", "role": "Faculty Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "library-advisory",
+      "name": "Library Advisory Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Yang Yang", "department": "Nanoscience Technology Center", "role": "Faculty Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "strategic-planning-council",
+      "name": "Strategic Planning Council",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Yang Yang", "department": "Nanoscience Technology Center", "role": "Faculty Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "undergraduate-course-review",
+      "name": "Undergraduate Course Review Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Sudeshna Pal", "department": "Mechanical and Aerospace Engineering", "role": "Faculty Representative", "term": "2025-2027" },
+        { "name": "Arthur Weeks", "department": "Electrical and Computer Engineering", "role": "Senate Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "athletics-advisory",
+      "name": "University Athletics Advisory Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Tian Tian", "department": "Mechanical and Aerospace Engineering", "role": "Senate Representative", "term": "2025-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "university-honors",
+      "name": "University Honors Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Samik Bhattacharya", "department": "Mechanical and Aerospace Engineering", "role": "Faculty Representative", "term": "2025-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "university-master-planning",
+      "name": "University Master Planning Committee",
+      "term": "3-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Paria Gharavi", "department": "Materials Science & Engineering", "role": "Senate Representative", "term": "2026-2029" },
+        { "name": "Haofei Yu", "department": "Civil, Environmental & Construction Engineering", "role": "Faculty Representative", "term": "2025-2028" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    },
+    {
+      "id": "university-promotion-tenure",
+      "name": "University Promotion and Tenure Committee",
+      "term": "2-year term",
+      "openSeats": 0,
+      "members": [
+        { "name": "Yunjun Xu", "department": "Mechanical and Aerospace Engineering", "role": "Faculty Representative", "term": "2025-2027" }
+      ],
+      "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
+    }
+  ]
+}

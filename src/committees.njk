@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+title: Committees
+description: CECS representation and open seats across UCF Faculty Senate committees.
+permalink: /committees/
+---
+{% from "partials/committee-card.njk" import card %}
+{% set openList = committees.committees | openCommittees %}
+{% set filledList = committees.committees | representedCommittees %}
+{% set openSeats = committees.committees | totalOpenSeats %}
+
+<section class="page-head">
+  <h1>CECS on Faculty Senate committees</h1>
+  <p class="lede">
+    Current College of Engineering and Computer Science representation for {{ committees.academicYear }}.
+    Committees with open seats need volunteers — pick any on the
+    <a href="{{ '/signup/' | url }}">volunteer form</a>. Always confirm details against the
+    <a href="{{ site.committeesReferenceUrl }}" target="_blank" rel="noopener">official UCF Faculty Senate listing ↗</a>.
+  </p>
+</section>
+
+<section class="category">
+  <div class="section-head">
+    <h2>Open seats — volunteers needed</h2>
+    <span class="muted">{{ openSeats }} seat{{ 's' if openSeats != 1 }} across {{ openList | length }} committee{{ 's' if openList | length != 1 }}</span>
+  </div>
+  {% if openList | length %}
+    <div class="card-grid">
+      {% for committee in openList %}
+        {{ card(committee, signups) }}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">Every CECS seat is currently filled — thank you! You can still <a href="{{ '/signup/' | url }}">add your name</a> as a backup for future openings.</p>
+  {% endif %}
+</section>
+
+<section class="category">
+  <div class="section-head">
+    <h2>Currently represented</h2>
+    <span class="muted">{{ filledList | length }} committee{{ 's' if filledList | length != 1 }}</span>
+  </div>
+  <div class="card-grid">
+    {% for committee in filledList %}
+      {{ card(committee, signups) }}
+    {% endfor %}
+  </div>
+</section>

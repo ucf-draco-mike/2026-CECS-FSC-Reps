@@ -1,0 +1,10 @@
+{
+  "_note": "News / share-outs for CECS faculty through the year. Add a new object to the top of 'posts'. 'date' is YYYY-MM-DD. 'body' may contain basic HTML.",
+  "posts": [
+    {
+      "date": "2026-06-26",
+      "title": "Committee recruiting for 2026–2027 is open",
+      "body": "<p>We're recruiting CECS faculty to fill open Faculty Senate committee seats for the 2026–2027 year. Several committees have open seats right now — including the Faculty Center for Teaching and Learning Advisory Committee, Graduate Policy Committee, Personnel Committee, Research Council, and University Travel Awards Committee. Browse the <a href=\"../committees/\">committees</a> and add your name on the <a href=\"../signup/\">volunteer form</a>.</p>"
+    }
+  ]
+}

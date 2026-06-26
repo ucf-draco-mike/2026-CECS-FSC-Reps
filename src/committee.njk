@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: committees.committees
+  size: 1
+  alias: committee
+permalink: "/committees/{{ committee.id }}/"
+eleventyComputed:
+  title: "{{ committee.name }}"
+  description: "CECS representation on the {{ committee.name }}."
+---
+{% set volunteers = signups | signupsFor(committee.id) %}
+{% set needed = committee.openSeats or 0 %}
+{% set interested = volunteers | length %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ '/committees/' | url }}">← All committees</a>
+</nav>
+
+<article class="committee-detail">
+  <header class="page-head">
+    <h1>{{ committee.name }}</h1>
+    <p class="status-line">
+      {% if needed > 0 %}
+        <span class="badge badge-open">{{ needed }} seat{{ 's' if needed != 1 }} open</span>
+        {% if interested > 0 %}{{ interested }} {{ 'person has' if interested == 1 else 'people have' }} volunteered so far.{% else %}Be the first CECS volunteer.{% endif %}
+      {% else %}
+        <span class="badge badge-filled">Represented</span> All CECS seats are currently filled.
+      {% endif %}
+    </p>
+  </header>
+
+  <dl class="detail-meta">
+    <div><dt>Term length</dt><dd>{{ committee.term }}</dd></div>
+    <div><dt>Open CECS seats</dt><dd>{{ needed }}</dd></div>
+    {% if needed > 0 and committee.openSeatRole %}<div><dt>Seeking</dt><dd>{{ committee.openSeatRole }}</dd></div>{% endif %}
+    {% if needed > 0 and committee.openSeatTerm %}<div><dt>Seat term</dt><dd>{{ committee.openSeatTerm }}</dd></div>{% endif %}
+  </dl>
+
+  {% if committee.members | length %}
+    <section class="detail-volunteers">
+      <h2>Current CECS representatives</h2>
+      <ul class="volunteer-list">
+        {% for m in committee.members %}
+          <li>
+            <strong>{{ m.name }}</strong>{% if m.note %} <span class="tag">{{ m.note }}</span>{% endif %}
+            <br /><span class="muted">{{ m.role }}{% if m.department %} · {{ m.department }}{% endif %}{% if m.term %} · {{ m.term }}{% endif %}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if interested %}
+    <section class="detail-volunteers">
+      <h2>Volunteered for an open seat</h2>
+      <ul class="volunteer-list">
+        {% for v in volunteers %}
+          <li><strong>{{ v.name }}</strong>{% if v.department %} <span class="muted">— {{ v.department }}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <p class="detail-actions">
+    {% if needed > 0 %}
+      <a class="btn btn-large" href="{{ ['/signup/?committee=', committee.id] | join | url }}">Volunteer for this committee</a>
+    {% else %}
+      <a class="btn btn-large btn-ghost" href="{{ ['/signup/?committee=', committee.id] | join | url }}">Add your name as backup</a>
+    {% endif %}
+    {% if committee.moreInfoUrl %}
+      <a class="link" href="{{ committee.moreInfoUrl }}" target="_blank" rel="noopener">Official info ↗</a>
+    {% endif %}
+  </p>
+</article>

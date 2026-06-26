@@ -1,0 +1,91 @@
+---
+layout: layouts/base.njk
+title: Volunteer
+description: Sign up to represent CECS on a UCF Faculty Senate committee.
+permalink: /signup/
+extraScript: /assets/js/signup.js
+---
+<section class="page-head">
+  <h1>Volunteer to serve</h1>
+  <p class="lede">
+    Pick one or more committees and tell us a little about yourself. Your name and
+    department may appear publicly on this site to show momentum and help us avoid
+    doubling up — your email stays private and is used only by the CECS rep to follow up.
+  </p>
+</section>
+
+<form
+  id="signup-form"
+  class="signup-form"
+  action="https://formspree.io/f/{{ site.formspreeId }}"
+  method="POST"
+>
+  <div class="field">
+    <label for="name">Full name <span class="req">*</span></label>
+    <input type="text" id="name" name="name" autocomplete="name" required />
+  </div>
+
+  <div class="field">
+    <label for="email">UCF email <span class="req">*</span></label>
+    <input type="email" id="email" name="email" autocomplete="email" required />
+    <p class="hint">Kept private. Used only for committee follow-up.</p>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="department">Department / School</label>
+      <input type="text" id="department" name="department" placeholder="e.g. Computer Science" />
+    </div>
+    <div class="field">
+      <label for="rank">Rank / title</label>
+      <input type="text" id="rank" name="rank" placeholder="e.g. Associate Professor" />
+    </div>
+  </div>
+
+  <fieldset class="field">
+    <legend>Committees you're interested in <span class="req">*</span></legend>
+    <p class="hint">Select as many as you'd consider. We'll match where the need is greatest.</p>
+    {% set openList = committees.committees | openCommittees %}
+    {% set filledList = committees.committees | representedCommittees %}
+    {% if openList | length %}
+      <div class="checkgroup">
+        <p class="checkgroup-title">Committees with open seats</p>
+        {% for committee in openList %}
+          <label class="check">
+            <input type="checkbox" name="committees" value="{{ committee.id }}" data-name="{{ committee.name }}" />
+            <span>{{ committee.name }} <small class="muted">({{ committee.openSeats }} open)</small></span>
+          </label>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="checkgroup">
+      <p class="checkgroup-title">Other committees (join as backup / future openings)</p>
+      {% for committee in filledList %}
+        <label class="check">
+          <input type="checkbox" name="committees" value="{{ committee.id }}" data-name="{{ committee.name }}" />
+          <span>{{ committee.name }}</span>
+        </label>
+      {% endfor %}
+    </div>
+  </fieldset>
+
+  <div class="field">
+    <label for="notes">Notes / availability <span class="muted">(optional)</span></label>
+    <textarea id="notes" name="notes" rows="4" placeholder="Anything that helps with matching — prior service, scheduling constraints, strong preferences."></textarea>
+  </div>
+
+  <!-- Human-readable committee names, filled in on submit for the Formspree dashboard. -->
+  <input type="hidden" name="committee_names" id="committee_names" />
+  <!-- Honeypot: bots fill this; humans don't. Formspree drops these. -->
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="gotcha" aria-hidden="true" />
+
+  <p class="form-error" id="form-error" role="alert" hidden></p>
+  <button type="submit" class="btn btn-large">Submit volunteer form</button>
+  <p class="hint">Submitting sends your info to the CECS Faculty Senate rep via Formspree.</p>
+</form>
+
+<div class="form-success" id="form-success" hidden>
+  <h2>Thank you for volunteering! 🎉</h2>
+  <p>Your interest has been recorded. The CECS rep will follow up about nominations. Your name will appear on the committee pages after the next data sync.</p>
+  <p><a class="btn" href="{{ '/committees/' | url }}">Back to committees</a></p>
+</div>

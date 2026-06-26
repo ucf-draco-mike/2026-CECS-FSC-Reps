@@ -1,0 +1,21 @@
+{
+  "name": "2026-cecs-fsc-reps",
+  "version": "1.0.0",
+  "description": "Recruiting and information site for CECS faculty serving on UCF Faculty Senate committees.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "eleventy --serve --quiet",
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rimraf _site",
+    "sync": "node scripts/sync-formspree.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "rimraf": "^5.0.5"
+  }
+}
