@@ -1,6 +1,93 @@
 {
-  "_note": "GENERATED FILE — do not edit by hand. The 'Sync Formspree submissions' GitHub Action overwrites this with volunteer data pulled from the Formspree read-only API. byCommittee maps a committee id to the list of public volunteer entries (name + department only; no emails).",
-  "generatedAt": null,
-  "totalSubmissions": 0,
-  "byCommittee": {}
+  "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department are stored (no emails).",
+  "generatedAt": "2026-06-26T19:59:37.728Z",
+  "totalSubmissions": 6,
+  "byCommittee": {
+    "commencement-convocation-recognitions": [
+      {
+        "name": "Grace Fox",
+        "department": "School of Modeling, Simulation, and Training (SMST)"
+      }
+    ],
+    "faculty-center-advisory": [
+      {
+        "name": "Hansen Mansy",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      }
+    ],
+    "faculty-staff-benefits": [
+      {
+        "name": "Grace Fox",
+        "department": "School of Modeling, Simulation, and Training (SMST)"
+      }
+    ],
+    "graduate-appeals": [
+      {
+        "name": "Grace Fox",
+        "department": "School of Modeling, Simulation, and Training (SMST)"
+      }
+    ],
+    "graduate-curriculum": [
+      {
+        "name": "Grace Fox",
+        "department": "School of Modeling, Simulation, and Training (SMST)"
+      }
+    ],
+    "graduate-policy": [
+      {
+        "name": "Adan Vela",
+        "department": "Industrial Engineering and Management Systems (IEMS)"
+      },
+      {
+        "name": "Grace Fox",
+        "department": "School of Modeling, Simulation, and Training (SMST)"
+      },
+      {
+        "name": "MENGXIN ZHENG",
+        "department": "Computer Science (CS)"
+      },
+      {
+        "name": "Saikat Dey",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Shahana Ibrahim",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "graduate-program-review-awards": [
+      {
+        "name": "Grace Fox",
+        "department": "School of Modeling, Simulation, and Training (SMST)"
+      }
+    ],
+    "personnel": [
+      {
+        "name": "MENGXIN ZHENG",
+        "department": "Computer Science (CS)"
+      }
+    ],
+    "research-council": [
+      {
+        "name": "Adan Vela",
+        "department": "Industrial Engineering and Management Systems (IEMS)"
+      },
+      {
+        "name": "Saikat Dey",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "undergraduate-policy-curriculum": [
+      {
+        "name": "Shahana Ibrahim",
+        "department": "Electrical and Computer Engineering (ECE)"
+      }
+    ],
+    "university-travel-awards": [
+      {
+        "name": "MENGXIN ZHENG",
+        "department": "Computer Science (CS)"
+      }
+    ]
+  }
 }
