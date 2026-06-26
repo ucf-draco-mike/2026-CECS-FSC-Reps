@@ -39,7 +39,7 @@
       "name": "Graduate Policy Committee",
       "term": "3-year term",
       "openSeats": 1,
-      "openSeatRole": "Senate Representative",
+      "openSeatRole": "Faculty Representative",
       "openSeatTerm": "2026-2029",
       "members": [],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
@@ -49,6 +49,7 @@
       "name": "Personnel Committee",
       "term": "2-year term",
       "openSeats": 1,
+      "openSeatRole": "Faculty Representative",
       "openSeatTerm": "2026-2028",
       "members": [],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
@@ -82,6 +83,7 @@
       "name": "University Travel Awards Committee",
       "term": "2-year term",
       "openSeats": 1,
+      "openSeatRole": "Faculty Representative",
       "openSeatTerm": "2026-2028",
       "members": [],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
