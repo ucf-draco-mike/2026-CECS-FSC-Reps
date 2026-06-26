@@ -9,7 +9,11 @@ export default {
   university: "University of Central Florida",
 
   // The organizer / point of contact shown in the footer and on the About page.
-  contactName: "CECS Faculty Senate Steering Representative",
+  // This is the CECS representative to the Faculty Senate Committee on Committees,
+  // who compiles volunteers and puts names forward for nomination.
+  contactName: "Dr. Mike Borowczak",
+  contactTitle: "CECS Representative to the Faculty Senate Committee on Committees",
+  contactDepartment: "Electrical & Computer Engineering",
   contactEmail: "borowczak@gmail.com",
 
   // Formspree form used by the public signup form.
