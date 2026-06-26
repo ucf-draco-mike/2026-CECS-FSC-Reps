@@ -205,6 +205,38 @@ fieldset.field { border: 1px solid var(--line); border-radius: var(--radius); pa
 .form-success { background: var(--filled-bg); border: 1px solid #bfe3cd; border-radius: var(--radius); padding: 1.5rem 1.75rem; max-width: 760px; }
 .form-success h2 { margin-top: 0; }
 
+/* Thank-you modal (post-signup landing) */
+body.modal-open { overflow: hidden; }
+.thanks-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.25rem; background: rgba(0, 0, 0, 0.55);
+  animation: thanks-fade 0.18s ease-out;
+}
+/* The flex display above outranks the UA [hidden] rule, so restore it explicitly. */
+.thanks-overlay[hidden] { display: none; }
+.thanks-modal {
+  position: relative; background: var(--paper); border-radius: var(--radius);
+  border-top: 5px solid var(--gold); box-shadow: var(--shadow);
+  max-width: 520px; width: 100%; padding: 2rem 1.9rem 1.75rem;
+  text-align: center; animation: thanks-rise 0.22s ease-out;
+}
+.thanks-close {
+  position: absolute; top: 0.5rem; right: 0.6rem; background: none; border: 0;
+  font-size: 1.6rem; line-height: 1; color: var(--ink-soft); cursor: pointer; padding: 0.25rem 0.5rem;
+}
+.thanks-close:hover { color: var(--ink); }
+.thanks-emoji { font-size: 2.4rem; margin: 0 0 0.4rem; }
+.thanks-title { margin: 0 0 0.75rem; font-size: 1.5rem; }
+.thanks-body { text-align: left; color: var(--ink-soft); }
+.thanks-body p { margin: 0 0 0.75rem; }
+.thanks-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin: 1.25rem 0 0; }
+@keyframes thanks-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes thanks-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .thanks-overlay, .thanks-modal { animation: none; }
+}
+
 /* Stats */
 .stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
 .stat-card {

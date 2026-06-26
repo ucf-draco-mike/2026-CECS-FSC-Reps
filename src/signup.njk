@@ -98,6 +98,9 @@ extraScript: /assets/js/signup.js
 
   <!-- Human-readable committee names, filled in on submit for the Formspree dashboard. -->
   <input type="hidden" name="committee_names" id="committee_names" />
+  <!-- Where Formspree sends volunteers after a non-JS submit: the how-it-works map
+       with the thank-you modal enabled. The JS path (signup.js) redirects here too. -->
+  <input type="hidden" name="_next" value="{{ site.url }}/how-it-works/?thanks=1" />
   <!-- Honeypot: bots fill this; humans don't. Formspree drops these. -->
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="gotcha" aria-hidden="true" />
 

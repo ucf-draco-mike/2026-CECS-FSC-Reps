@@ -58,6 +58,18 @@
         headers: { Accept: "application/json" },
       });
       if (res.ok) {
+        // Redirect to the thank-you landing page (same target as the form's _next
+        // fallback) so JS and non-JS submitters get one consistent experience.
+        // Pass the first name along so the modal can greet them personally.
+        const next = form.querySelector('input[name="_next"]')?.value;
+        if (next) {
+          const firstName = (form.querySelector("#name")?.value || "").trim().split(/\s+/)[0];
+          const url = new URL(next, window.location.origin);
+          if (firstName) url.searchParams.set("name", firstName);
+          window.location.assign(url.toString());
+          return;
+        }
+        // No _next configured — fall back to the inline success message.
         form.hidden = true;
         if (successEl) {
           successEl.hidden = false;
