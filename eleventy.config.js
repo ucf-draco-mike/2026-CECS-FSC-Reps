@@ -59,6 +59,14 @@ export default function (eleventyConfig) {
   // Take the first n items of an array (Nunjucks' built-in `slice` chunks instead).
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
+  // Percentage width (0–100, rounded) of `value` relative to `max`, for the
+  // CSS bar charts on the stats page. Guards against divide-by-zero.
+  eleventyConfig.addFilter("barPct", (value, max) => {
+    const m = Number(max) || 0;
+    if (m <= 0) return 0;
+    return Math.max(0, Math.min(100, Math.round((Number(value) / m) * 100)));
+  });
+
   return {
     pathPrefix: process.env.PATH_PREFIX || "/",
     dir: {

@@ -1,0 +1,158 @@
+---
+layout: layouts/base.njk
+title: Stats
+description: CECS Faculty Senate committee service by the numbers — representation by department, role, term, and renewal timeline.
+permalink: /stats/
+---
+{% set t = stats.totals %}
+
+<section class="page-head">
+  <h1>CECS service by the numbers</h1>
+  <p class="lede">
+    A live snapshot of College of Engineering and Computer Science representation across
+    UCF Faculty Senate committees for {{ committees.academicYear }}. Everything here is
+    derived automatically from the
+    <a href="{{ '/committees/' | url }}">committee catalog</a>{% if stats.hasVolunteers %} and volunteer sign-ups{% endif %}.
+  </p>
+</section>
+
+<section class="stat-cards" aria-label="Headline numbers">
+  <div class="stat-card">
+    <span class="stat-num">{{ t.committees }}</span>
+    <span class="stat-label">Committees tracked</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ t.seatsFilled }}</span>
+    <span class="stat-label">CECS seats filled</span>
+  </div>
+  <div class="stat-card{% if t.openSeats %} stat-card-open{% endif %}">
+    <span class="stat-num">{{ t.openSeats }}</span>
+    <span class="stat-label">Open seat{{ 's' if t.openSeats != 1 }} to fill</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ t.distinctFaculty }}</span>
+    <span class="stat-label">Faculty serving</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ t.departmentsRepresented }}</span>
+    <span class="stat-label">Departments represented</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ t.coveragePct }}%</span>
+    <span class="stat-label">Seat coverage</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Representation by department</h2>
+    <span class="muted">{{ t.seatsFilled }} seat{{ 's' if t.seatsFilled != 1 }} · {{ t.distinctFaculty }} faculty</span>
+  </div>
+  {% if stats.byDepartment | length %}
+    <div class="chart">
+      {% for d in stats.byDepartment %}
+        <div class="chart-row">
+          <span class="chart-label" title="{{ d.name }}">{{ d.name }}</span>
+          <span class="chart-track">
+            <span class="chart-bar" style="width: {{ d.seats | barPct(stats.maxDeptSeats) }}%"></span>
+          </span>
+          <span class="chart-value">
+            {{ d.seats }}
+            <small>{{ d.people }} {{ 'person' if d.people == 1 else 'people' }} · {{ d.committees }} committee{{ 's' if d.committees != 1 }}{% if d.volunteers %} · {{ d.volunteers }} volunteered{% endif %}</small>
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+    <p class="hint">Bars show the number of committee seats each CECS department currently holds. A department can hold more seats than it has people when one person serves on multiple committees.</p>
+  {% else %}
+    <p class="empty">No department representation recorded yet.</p>
+  {% endif %}
+</section>
+
+<section class="stat-split">
+  <div>
+    <div class="section-head"><h2>By seat role</h2></div>
+    {% if stats.byRole | length %}
+      <ul class="stat-list">
+        {% for r in stats.byRole %}
+          <li><span class="stat-list-label">{{ r.name }}</span><span class="stat-pill">{{ r.count }}</span></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">No roles recorded.</p>
+    {% endif %}
+  </div>
+  <div>
+    <div class="section-head"><h2>By term length</h2></div>
+    {% if stats.byTermLength | length %}
+      <ul class="stat-list">
+        {% for term in stats.byTermLength %}
+          <li><span class="stat-list-label">{{ term.name }}</span><span class="stat-pill">{{ term.count }} committee{{ 's' if term.count != 1 }}</span></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">No term data recorded.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% if stats.termTimeline | length %}
+  <section>
+    <div class="section-head">
+      <h2>Seat renewal timeline</h2>
+      <span class="muted">When current CECS terms expire</span>
+    </div>
+    <div class="chart">
+      {% for y in stats.termTimeline %}
+        <div class="chart-row">
+          <span class="chart-label">{{ y.year }}</span>
+          <span class="chart-track">
+            <span class="chart-bar chart-bar-alt" style="width: {{ y.count | barPct(stats.maxTimeline) }}%"></span>
+          </span>
+          <span class="chart-value">{{ y.count }} seat{{ 's' if y.count != 1 }}</span>
+        </div>
+      {% endfor %}
+    </div>
+    <p class="hint">Seats whose terms end in each year. Years with several expirations are where recruiting will matter most.</p>
+  </section>
+{% endif %}
+
+{% if stats.multiCommittee | length %}
+  <section>
+    <div class="section-head">
+      <h2>Serving on multiple committees</h2>
+      <span class="muted">{{ stats.multiCommittee | length }} faculty</span>
+    </div>
+    <ul class="volunteer-list multi-list">
+      {% for p in stats.multiCommittee %}
+        <li>
+          <strong>{{ p.name }}</strong> <span class="stat-pill">{{ p.count }} committees</span>
+          {% if p.department %}<br /><span class="muted">{{ p.department }}</span>{% endif %}
+          <br /><span class="muted">{{ p.committees | join(' · ') }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+<section class="band">
+  <h2>Want to move these numbers?</h2>
+  <p>
+    {% if t.openSeats %}
+      There {{ 'is' if t.openSeats == 1 else 'are' }} <strong>{{ t.openSeats }} open CECS seat{{ 's' if t.openSeats != 1 }}</strong>
+      across {{ t.committeesWithOpenSeats }} committee{{ 's' if t.committeesWithOpenSeats != 1 }}. Adding your name takes a couple of minutes.
+    {% else %}
+      Every CECS seat is currently filled — but backups are always welcome for mid-year openings.
+    {% endif %}
+  </p>
+  <p class="hero-actions">
+    <a class="btn btn-large" href="{{ '/signup/' | url }}">Volunteer</a>
+    <a class="btn btn-large btn-ghost" href="{{ '/committees/' | url }}">Browse committees</a>
+  </p>
+</section>
+
+{% if stats.generatedAt %}
+  <p class="muted">Volunteer figures last synced {{ stats.generatedAt | readableDate }}. Committee figures reflect the current catalog. Always confirm against the <a href="{{ site.committeesReferenceUrl }}" target="_blank" rel="noopener">official UCF Faculty Senate listing ↗</a>.</p>
+{% else %}
+  <p class="muted">Figures reflect the current committee catalog. Always confirm against the <a href="{{ site.committeesReferenceUrl }}" target="_blank" rel="noopener">official UCF Faculty Senate listing ↗</a>.</p>
+{% endif %}
