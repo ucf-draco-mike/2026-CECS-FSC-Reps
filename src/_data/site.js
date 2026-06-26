@@ -14,7 +14,7 @@ export default {
   contactName: "Dr. Mike Borowczak",
   contactTitle: "CECS Representative to the Faculty Senate Committee on Committees",
   contactDepartment: "Electrical & Computer Engineering",
-  contactEmail: "borowczak@gmail.com",
+  contactEmail: "mike.borowczak@ucf.edu",
 
   // Formspree form used by the public signup form.
   // The form id (xojoddwa) is PUBLIC — it is the POST endpoint and is safe to ship.
