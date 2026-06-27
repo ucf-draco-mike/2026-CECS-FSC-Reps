@@ -1,7 +1,7 @@
 {
   "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department are stored (no emails).",
-  "generatedAt": "2026-06-27T08:45:07.119Z",
-  "totalSubmissions": 10,
+  "generatedAt": "2026-06-27T19:38:21.568Z",
+  "totalSubmissions": 12,
   "byCommittee": {
     "admissions-standards": [
       {
@@ -10,6 +10,10 @@
       }
     ],
     "budget-administrative": [
+      {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
       {
         "name": "Wayesh Qarony",
         "department": "Electrical and Computer Engineering (ECE)"
@@ -35,6 +39,10 @@
     ],
     "faculty-center-advisory": [
       {
+        "name": "Edward Amoruso",
+        "department": "Computer Science (CS)"
+      },
+      {
         "name": "Hansen Mansy",
         "department": "Mechanical and Aerospace Engineering (MAE)"
       },
@@ -48,6 +56,10 @@
       }
     ],
     "faculty-staff-benefits": [
+      {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
       {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
@@ -85,6 +97,10 @@
         "department": "Industrial Engineering and Management Systems (IEMS)"
       },
       {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
       },
@@ -107,6 +123,10 @@
     ],
     "graduate-program-review-awards": [
       {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
       },
@@ -117,11 +137,19 @@
     ],
     "information-technology": [
       {
+        "name": "Edward Amoruso",
+        "department": "Computer Science (CS)"
+      },
+      {
         "name": "Saleem Sahawneh",
         "department": "Electrical and Computer Engineering (ECE)"
       }
     ],
     "personnel": [
+      {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
       {
         "name": "MENGXIN ZHENG",
         "department": "Computer Science (CS)"
@@ -133,6 +161,10 @@
         "department": "Industrial Engineering and Management Systems (IEMS)"
       },
       {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
         "name": "Saikat Dey",
         "department": "Electrical and Computer Engineering (ECE)"
       },
@@ -142,6 +174,10 @@
       }
     ],
     "strategic-planning-council": [
+      {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
       {
         "name": "Hatem Abou-Senna",
         "department": "Civil, Environmental, and Construction Engineering (CECE)"
@@ -178,6 +214,10 @@
       }
     ],
     "university-promotion-tenure": [
+      {
+        "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
       {
         "name": "Wayesh Qarony",
         "department": "Electrical and Computer Engineering (ECE)"
