@@ -1,7 +1,7 @@
 {
   "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department are stored (no emails).",
-  "generatedAt": "2026-06-28T09:21:10.728Z",
-  "totalSubmissions": 12,
+  "generatedAt": "2026-06-28T19:39:17.801Z",
+  "totalSubmissions": 14,
   "byCommittee": {
     "admissions-standards": [
       {
@@ -117,6 +117,10 @@
         "department": "Electrical and Computer Engineering (ECE)"
       },
       {
+        "name": "Ser Nam Lim",
+        "department": "Computer Science (CS)"
+      },
+      {
         "name": "Shahana Ibrahim",
         "department": "Electrical and Computer Engineering (ECE)"
       }
@@ -153,6 +157,10 @@
       {
         "name": "MENGXIN ZHENG",
         "department": "Computer Science (CS)"
+      },
+      {
+        "name": "Ser Nam Lim",
+        "department": "Computer Science (CS)"
       }
     ],
     "research-council": [
@@ -162,6 +170,10 @@
       },
       {
         "name": "Chinwendu Enyioha",
+        "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Qifeng Li",
         "department": "Electrical and Computer Engineering (ECE)"
       },
       {
