@@ -1,0 +1,130 @@
+---
+layout: layouts/base.njk
+title: Volunteer summary
+description: Who has volunteered to represent CECS on UCF Faculty Senate committees — summarized by person, department, and rank, with a downloadable table.
+permalink: /volunteers/
+---
+{% set t = volunteerStats.totals %}
+
+<section class="page-head">
+  <h1>Volunteer summary</h1>
+  <p class="lede">
+    Everyone who has raised their hand to represent {{ site.college }} on a UCF Faculty
+    Senate committee for {{ committees.academicYear }}, summarized by person, department,
+    and rank. Derived automatically from the
+    <a href="{{ '/signup/' | url }}">volunteer form</a>; only public fields are shown.
+  </p>
+</section>
+
+{% if not volunteerStats.hasVolunteers %}
+  <section class="band">
+    <h2>No volunteers recorded yet</h2>
+    <p>As soon as faculty start signing up, their names will appear here. Want to be first?</p>
+    <p class="hero-actions"><a class="btn btn-large" href="{{ '/signup/' | url }}">Volunteer</a></p>
+  </section>
+{% else %}
+<section class="stat-cards" aria-label="Headline numbers">
+  <div class="stat-card">
+    <span class="stat-num">{{ t.volunteers }}</span>
+    <span class="stat-label">Volunteer{{ 's' if t.volunteers != 1 }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ t.selections }}</span>
+    <span class="stat-label">Committee selections</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ t.departments }}</span>
+    <span class="stat-label">Departments</span>
+  </div>
+  {% if t.hasRanks %}
+    <div class="stat-card">
+      <span class="stat-num">{{ t.ranks }}</span>
+      <span class="stat-label">Distinct rank{{ 's' if t.ranks != 1 }}</span>
+    </div>
+  {% endif %}
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>By person</h2>
+    <a class="btn btn-small" href="{{ '/volunteer-summary.csv' | url }}" download="cecs-volunteer-summary.csv">⬇ Download CSV</a>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Rank</th>
+          <th scope="col" class="num">Committees</th>
+          <th scope="col">Committee list</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in volunteerStats.byPerson %}
+          <tr>
+            <th scope="row">{{ p.name }}</th>
+            <td>{% if p.deptAbbr %}<abbr title="{{ p.deptName }}">{{ p.deptAbbr }}</abbr>{% else %}{{ p.deptName }}{% endif %}</td>
+            <td>{% if p.rank == "Not specified" %}<span class="muted">{{ p.rank }}</span>{% else %}{{ p.rank }}{% endif %}</td>
+            <td class="num">{{ p.count }}</td>
+            <td class="committee-cell">{{ p.committees | join(', ') }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="hint">One row per volunteer; a volunteer who selected several committees is counted once here with all their picks listed. The CSV mirrors this table.</p>
+</section>
+
+<section class="stat-split">
+  <div>
+    <div class="section-head"><h2>By department</h2></div>
+    <div class="chart">
+      {% for d in volunteerStats.byDepartment %}
+        <div class="chart-row">
+          <span class="chart-label" title="{{ d.name }}">{{ d.abbr or d.name }}</span>
+          <span class="chart-track">
+            <span class="chart-bar" style="width: {{ d.people | barPct(volunteerStats.maxDeptPeople) }}%"></span>
+          </span>
+          <span class="chart-value">
+            {{ d.people }}
+            <small>{{ 'person' if d.people == 1 else 'people' }} · {{ d.selections }} selection{{ 's' if d.selections != 1 }}</small>
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+    <p class="hint">Distinct volunteers from each department, and how many committee selections they made in total.</p>
+  </div>
+  <div>
+    <div class="section-head"><h2>By rank</h2></div>
+    {% if t.hasRanks %}
+      <ul class="stat-list">
+        {% for r in volunteerStats.byRank %}
+          <li>
+            <span class="stat-list-label{% if r.name == 'Not specified' %} muted{% endif %}">{{ r.name }}</span>
+            <span class="stat-pill">{{ r.count }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">No ranks recorded yet — rank appears here for volunteers who provide it once the next data sync runs.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="band">
+  <h2>Add your name</h2>
+  <p>
+    The more CECS faculty volunteer, the stronger our voice across the Faculty Senate.
+    Signing up takes a couple of minutes, and you can pick as many committees as you'd consider.
+  </p>
+  <p class="hero-actions">
+    <a class="btn btn-large" href="{{ '/signup/' | url }}">Volunteer</a>
+    <a class="btn btn-large btn-ghost" href="{{ '/stats/' | url }}">See representation stats</a>
+  </p>
+</section>
+{% endif %}
+
+{% if volunteerStats.generatedAt %}
+  <p class="muted">Volunteer figures last synced {{ volunteerStats.generatedAt | readableDate }}. Only public fields (name, department, rank) are shown; emails and notes are never published.</p>
+{% endif %}

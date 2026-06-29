@@ -58,7 +58,7 @@ permalink: /stats/
           </span>
           <span class="chart-value">
             {{ d.seats }}
-            <small>{{ d.people }} {{ 'person' if d.people == 1 else 'people' }} · {{ d.committees }} committee{{ 's' if d.committees != 1 }}{% if d.volunteers %} · {{ d.volunteers }} volunteered{% endif %}</small>
+            <small>{{ d.people }} {{ 'person' if d.people == 1 else 'people' }} · {{ d.committees }} committee{{ 's' if d.committees != 1 }}{% if d.volunteerPeople %} · {{ d.volunteerPeople }} volunteered{% endif %}</small>
           </span>
         </div>
       {% endfor %}
@@ -67,6 +67,40 @@ permalink: /stats/
   {% else %}
     <p class="empty">No department representation recorded yet.</p>
   {% endif %}
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Representation relative to department size</h2>
+    <span class="muted">Bigger units are expected to hold more seats</span>
+  </div>
+  <p class="category-blurb">
+    Raw seat counts favor large departments. These bars normalize by department size
+    (ECE&nbsp;=&nbsp;CS&nbsp;=&nbsp;MAE&nbsp;&gt;&nbsp;CECE&nbsp;=&nbsp;IEMS&nbsp;&gt;&nbsp;MSE&nbsp;=&nbsp;SMST):
+    a <strong>parity index</strong> compares each unit's share of CECS seats to its share of
+    faculty size. <strong>1.0&times;</strong> is exactly proportional — below that a department
+    is under-represented for its size and is a natural recruiting target.
+  </p>
+  <div class="chart parity-chart">
+    {% for d in stats.byNormalizedSize %}
+      <div class="chart-row">
+        <span class="chart-label" title="{{ d.name }}">{{ d.abbr }}</span>
+        <span class="chart-track parity-track">
+          <span class="parity-baseline" aria-hidden="true" style="left: {{ 1 | barPct(stats.maxParity) }}%"></span>
+          <span class="chart-bar {% if d.parity < 1 %}parity-under{% else %}parity-over{% endif %}" style="width: {{ d.parity | barPct(stats.maxParity) }}%"></span>
+        </span>
+        <span class="chart-value">
+          {{ d.parity }}&times;
+          <small>{{ d.seats }} of {{ d.expectedSeats }} expected · size {{ d.size }}{% if d.volunteers %} · {{ d.volunteers }} volunteered{% endif %}</small>
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+  <p class="hint">
+    Parity index = (department's share of filled seats) ÷ (department's share of faculty size).
+    The dashed line marks 1.0× parity. "Expected" seats are what perfectly proportional
+    representation would give each unit at the current total.
+  </p>
 </section>
 
 <section class="stat-split">
@@ -147,6 +181,7 @@ permalink: /stats/
   </p>
   <p class="hero-actions">
     <a class="btn btn-large" href="{{ '/signup/' | url }}">Volunteer</a>
+    <a class="btn btn-large btn-ghost" href="{{ '/volunteers/' | url }}">See who's volunteered</a>
     <a class="btn btn-large btn-ghost" href="{{ '/committees/' | url }}">Browse committees</a>
   </p>
 </section>
