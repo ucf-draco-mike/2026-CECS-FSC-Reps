@@ -1,9 +1,13 @@
 {
   "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department are stored (no emails).",
-  "generatedAt": "2026-06-28T19:39:17.801Z",
-  "totalSubmissions": 14,
+  "generatedAt": "2026-06-29T11:13:10.419Z",
+  "totalSubmissions": 15,
   "byCommittee": {
     "admissions-standards": [
+      {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
       {
         "name": "Wayesh Qarony",
         "department": "Electrical and Computer Engineering (ECE)"
@@ -13,6 +17,10 @@
       {
         "name": "Chinwendu Enyioha",
         "department": "Electrical and Computer Engineering (ECE)"
+      },
+      {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
       },
       {
         "name": "Wayesh Qarony",
@@ -39,6 +47,10 @@
     ],
     "faculty-center-advisory": [
       {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
+      {
         "name": "Edward Amoruso",
         "department": "Computer Science (CS)"
       },
@@ -61,6 +73,10 @@
         "department": "Electrical and Computer Engineering (ECE)"
       },
       {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
+      {
         "name": "Grace Fox",
         "department": "School of Modeling, Simulation, and Training (SMST)"
       },
@@ -70,6 +86,10 @@
       }
     ],
     "general-undergraduate-requirements": [
+      {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
       {
         "name": "Saleem Sahawneh",
         "department": "Electrical and Computer Engineering (ECE)"
@@ -195,6 +215,12 @@
         "department": "Civil, Environmental, and Construction Engineering (CECE)"
       }
     ],
+    "student-success-council": [
+      {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      }
+    ],
     "undergraduate-course-review": [
       {
         "name": "Saleem Sahawneh",
@@ -206,6 +232,10 @@
       }
     ],
     "undergraduate-policy-curriculum": [
+      {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
       {
         "name": "Saleem Sahawneh",
         "department": "Electrical and Computer Engineering (ECE)"
@@ -236,6 +266,10 @@
       }
     ],
     "university-travel-awards": [
+      {
+        "name": "Darshan Yadav",
+        "department": "Mechanical and Aerospace Engineering (MAE)"
+      },
       {
         "name": "Hatem Abou-Senna",
         "department": "Civil, Environmental, and Construction Engineering (CECE)"
