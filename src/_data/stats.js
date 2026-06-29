@@ -10,6 +10,8 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
+import { DEPARTMENTS, TOTAL_SIZE, classifyDept } from "../../lib/departments.js";
+
 const here = dirname(fileURLToPath(import.meta.url));
 const read = (name) =>
   JSON.parse(readFileSync(join(here, name), "utf8"));
@@ -64,10 +66,16 @@ export default function () {
   }
 
   // --- By department: seats, distinct people, distinct committees --------
+  // Canonicalize through the shared department registry so the same unit spelled
+  // different ways across the catalog and the signups ("Electrical & Computer
+  // Engineering" vs "Electrical and Computer Engineering (ECE)") rolls up into one
+  // row instead of fragmenting. Departments outside the seven sized units (e.g. a
+  // research center) fall back to their cleaned name.
   const deptMap = new Map();
-  const deptKey = (d) => d.toLowerCase();
-  const bump = (name) => {
-    const key = deptKey(name);
+  const bump = (rawName) => {
+    const hit = classifyDept(rawName);
+    const key = hit ? hit.key : `other:${rawName.toLowerCase()}`;
+    const name = hit ? hit.name : rawName;
     if (!deptMap.has(key)) {
       deptMap.set(key, {
         name,
@@ -156,6 +164,47 @@ export default function () {
     .filter((p) => p.count > 1)
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 
+  // --- Representation normalized by department size ----------------------
+  // Bigger departments are expected to hold proportionally more seats. We map
+  // every filled seat and every volunteer to one of the seven sized CECS units,
+  // then compare each unit's *share of seats* to its *share of faculty size*.
+  // parity = seatShare / sizeShare: 1.0 is exactly proportional, <1 is
+  // under-represented for its size, >1 is over-represented.
+  const sizeBuckets = new Map(
+    DEPARTMENTS.map((d) => [d.key, { ...d, seats: 0, volunteerPeople: new Set() }])
+  );
+  for (const s of seats) {
+    const dept = classifyDept(s.department);
+    if (dept) sizeBuckets.get(dept.key).seats += 1;
+  }
+  for (const v of volunteers) {
+    const dept = classifyDept(v.department);
+    if (dept && v.name) sizeBuckets.get(dept.key).volunteerPeople.add(v.name.toLowerCase());
+  }
+  const classifiedSeats = [...sizeBuckets.values()].reduce((m, b) => m + b.seats, 0);
+  const byNormalizedSize = [...sizeBuckets.values()]
+    .map((b) => {
+      const sizeShare = b.size / TOTAL_SIZE;
+      const seatShare = classifiedSeats ? b.seats / classifiedSeats : 0;
+      const expectedSeats = classifiedSeats * sizeShare;
+      return {
+        key: b.key,
+        abbr: b.abbr,
+        name: b.name,
+        size: b.size,
+        seats: b.seats,
+        volunteers: b.volunteerPeople.size,
+        // Seats per unit of department size — the "representation rate".
+        perSize: Math.round((b.seats / b.size) * 100) / 100,
+        // Share-of-seats vs share-of-size. Rounded to 2 dp for display.
+        parity: expectedSeats ? Math.round((b.seats / expectedSeats) * 100) / 100 : 0,
+        expectedSeats: Math.round(expectedSeats * 10) / 10,
+        sizePct: Math.round(sizeShare * 100),
+        seatPct: Math.round(seatShare * 100),
+      };
+    })
+    .sort((a, b) => a.parity - b.parity || b.size - a.size || a.abbr.localeCompare(b.abbr));
+
   // --- Totals -------------------------------------------------------------
   const distinctFaculty = personMap.size;
   const openSeats = committees.reduce((sum, c) => sum + (c.openSeats || 0), 0);
@@ -182,8 +231,11 @@ export default function () {
     byTermLength,
     termTimeline,
     multiCommittee,
+    byNormalizedSize,
     maxDeptSeats: byDepartment.reduce((m, d) => Math.max(m, d.seats), 0) || 1,
     maxTimeline: termTimeline.reduce((m, y) => Math.max(m, y.count), 0) || 1,
+    maxPerSize: byNormalizedSize.reduce((m, d) => Math.max(m, d.perSize), 0) || 1,
+    maxParity: byNormalizedSize.reduce((m, d) => Math.max(m, d.parity), 0) || 1,
     hasVolunteers: volunteers.length > 0,
   };
 }

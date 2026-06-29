@@ -3,8 +3,9 @@
  * Sync Formspree submissions into src/_data/signups.json.
  *
  * Pulls volunteer submissions from the Formspree read-only API and writes a
- * privacy-filtered JSON file the site reads. ONLY public fields (name +
- * department) are written; email, notes, and metadata are intentionally dropped.
+ * privacy-filtered JSON file the site reads. ONLY public fields (name,
+ * department, rank) are written; email, notes, and metadata are intentionally
+ * dropped.
  *
  * Environment:
  *   FORMSPREE_API_KEY   (required) read-only API key, provided as a repo secret
@@ -127,6 +128,7 @@ async function main() {
     const name = String(field(sub, "name", "full name", "_name") || "").trim();
     if (!name) continue;
     const department = String(field(sub, "department", "school", "unit") || "").trim();
+    const rank = String(field(sub, "rank", "title", "rank / title") || "").trim();
     const values = committeeValues(sub);
     let matchedAny = false;
 
@@ -136,7 +138,9 @@ async function main() {
       const key = `${id}|${name.toLowerCase()}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      (byCommittee[id] ||= []).push({ name, department });
+      const record = { name, department };
+      if (rank) record.rank = rank;
+      (byCommittee[id] ||= []).push(record);
       matchedAny = true;
     }
     if (matchedAny) counted++;
@@ -151,7 +155,7 @@ async function main() {
 
   const output = {
     _note:
-      "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department are stored (no emails).",
+      "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department + rank are stored (no emails).",
     generatedAt: new Date().toISOString(),
     totalSubmissions: counted,
     byCommittee: sorted,

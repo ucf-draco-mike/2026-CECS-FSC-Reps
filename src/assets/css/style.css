@@ -256,6 +256,27 @@ body.modal-open { overflow: hidden; }
 .chart-value { font-size: 0.9rem; font-weight: 700; white-space: nowrap; text-align: right; }
 .chart-value small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 0.74rem; }
 
+/* Parity chart (representation normalized by department size) */
+.parity-track { position: relative; overflow: visible; }
+.parity-baseline {
+  position: absolute; top: -3px; bottom: -3px; width: 0; transform: translateX(-50%);
+  border-left: 2px dashed var(--ink-soft); z-index: 2; pointer-events: none;
+}
+.parity-over { background: var(--filled); }
+.parity-under { background: var(--open); }
+
+/* Data table (downloadable volunteer summary) */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.data-table th, .data-table td { text-align: left; padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table thead th { background: #faf8f2; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gold-deep); white-space: nowrap; }
+.data-table tbody tr:last-child td, .data-table tbody tr:last-child th { border-bottom: 0; }
+.data-table tbody tr:hover { background: #fcfbf7; }
+.data-table th[scope="row"] { font-weight: 700; }
+.data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.data-table .committee-cell { color: var(--ink-soft); min-width: 16rem; }
+.data-table abbr { text-decoration: none; border-bottom: 1px dotted var(--ink-soft); cursor: help; }
+
 .stat-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .stat-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
 .stat-list li {
