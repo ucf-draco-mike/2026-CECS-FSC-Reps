@@ -1,7 +1,7 @@
 {
   "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department + rank are stored (no emails).",
-  "generatedAt": "2026-06-29T20:08:07.004Z",
-  "totalSubmissions": 15,
+  "generatedAt": "2026-06-30T09:53:06.953Z",
+  "totalSubmissions": 16,
   "byCommittee": {
     "admissions-standards": [
       {
@@ -241,6 +241,11 @@
         "name": "Saikat Dey",
         "department": "Electrical and Computer Engineering (ECE)",
         "rank": "Assistant Professor"
+      },
+      {
+        "name": "Truong Nghiem",
+        "department": "Electrical and Computer Engineering (ECE)",
+        "rank": "Associate Professor"
       },
       {
         "name": "Wayesh Qarony",
