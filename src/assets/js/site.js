@@ -9,6 +9,17 @@
   });
 })();
 
+// Tell screen-reader users when a link opens in a new tab.
+(function () {
+  document.querySelectorAll('a[target="_blank"]').forEach(function (a) {
+    if (a.querySelector(".sr-only")) return;
+    const note = document.createElement("span");
+    note.className = "sr-only";
+    note.textContent = " (opens in new tab)";
+    a.append(note);
+  });
+})();
+
 // Thank-you modal: shown when a page that includes the modal partial is loaded
 // with ?thanks=1 (or #thanks) — the URL Formspree sends volunteers to post-signup.
 (function () {
@@ -65,7 +76,25 @@
   }
 
   function onKeydown(e) {
-    if (e.key === "Escape") close();
+    if (e.key === "Escape") {
+      close();
+      return;
+    }
+    // Keep Tab focus inside the dialog while it is open.
+    if (e.key !== "Tab") return;
+    const focusables = Array.from(
+      overlay.querySelectorAll("a[href], button:not([disabled])")
+    ).filter((el) => !el.closest("[hidden]"));
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   closeEls.forEach((el) => el.addEventListener("click", close));

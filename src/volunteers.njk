@@ -53,10 +53,11 @@ permalink: /volunteers/
 <section>
   <div class="section-head">
     <h2>By person</h2>
-    <a class="btn btn-small" href="{{ '/volunteer-summary.csv' | url }}" download="cecs-volunteer-summary.csv">⬇ Download CSV</a>
+    <a class="btn btn-small" href="{{ '/volunteer-summary.csv' | url }}" download="cecs-volunteer-summary.csv"><span aria-hidden="true">⬇</span> Download CSV</a>
   </div>
   <div class="table-wrap">
     <table class="data-table">
+      <caption class="sr-only">Volunteers by person: department, rank, and committee selections</caption>
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -91,7 +92,7 @@ permalink: /volunteers/
       {% for d in volunteerStats.byDepartment %}
         <div class="chart-row">
           <span class="chart-label" title="{{ d.name }}">{{ d.abbr or d.name }}</span>
-          <span class="chart-track">
+          <span class="chart-track" aria-hidden="true">
             <span class="chart-bar" style="width: {{ d.people | barPct(volunteerStats.maxDeptPeople) }}%"></span>
           </span>
           <span class="chart-value">

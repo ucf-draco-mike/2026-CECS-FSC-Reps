@@ -2,7 +2,7 @@
 :root {
   --gold: #ffc904;
   --gold-bright: #ffd633;
-  --gold-deep: #946b00;        /* gold dark enough to read as text on white */
+  --gold-deep: #8a6300;        /* gold dark enough for 4.5:1 text on white AND --bg */
   --black: #000000;            /* UCF black — chrome */
   --ink: #1a1a1a;
   --ink-soft: #4a4a4a;
@@ -13,8 +13,14 @@
   --open-bg: #fdecea;
   --filled: #1e7d4f;
   --filled-bg: #e7f4ec;
-  --partial: #9a6a00;
+  --partial: #8a5f00;          /* dark enough for 4.5:1 on --partial-bg */
   --partial-bg: #fff5da;
+  /* Parity statuses — colorblind-safe (teal green / amber / red), each ≥3:1
+     against the chart track and ≥4.5:1 as text on white. Color is never the
+     only signal: every use pairs with a text label. */
+  --status-target: #007a5c;
+  --status-above: #9c6300;
+  --status-below: #c62828;
   --radius: 12px;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
   --maxw: 1080px;
@@ -22,7 +28,14 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Keep anchor targets clear of the sticky header. */
+html { scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
 body {
   margin: 0;
   font-family: var(--font);
@@ -34,6 +47,10 @@ body {
 h1, h2, h3 { line-height: 1.2; color: var(--ink); }
 a { color: var(--gold-deep); }
 a:hover { color: #6e5000; }
+
+/* Visible keyboard focus everywhere; gold on the dark chrome, dark on paper. */
+:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 2px; border-radius: 2px; }
+.site-header :focus-visible, .site-footer :focus-visible, .thanks-overlay :focus-visible { outline-color: var(--gold); }
 
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 1.25rem; }
 .sr-only, .skip-link {
@@ -251,19 +268,43 @@ body.modal-open { overflow: hidden; }
 .chart-row { display: grid; grid-template-columns: minmax(9rem, 16rem) 1fr auto; align-items: center; gap: 0.75rem; }
 .chart-label { font-size: 0.88rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chart-track { background: #ede9df; border-radius: 999px; height: 0.85rem; overflow: hidden; }
-.chart-bar { display: block; height: 100%; background: var(--gold); border-radius: 999px; min-width: 2px; }
+.chart-bar {
+  display: block; height: 100%; background: var(--gold); border-radius: 999px; min-width: 2px;
+  /* Inset ring so light bars stay perceivable against the light track. */
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.28);
+}
 .chart-bar-alt { background: var(--gold-deep); }
 .chart-value { font-size: 0.9rem; font-weight: 700; white-space: nowrap; text-align: right; }
 .chart-value small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 0.74rem; }
 
 /* Parity chart (representation normalized by department size) */
+/* Fixed label/value columns so every row's track — and therefore the dashed
+   1.0× target line — lines up at the same x position across rows. */
+.parity-chart .chart-row { grid-template-columns: 5rem 1fr 21rem; }
+.parity-chart .chart-value small { white-space: normal; }
 .parity-track { position: relative; overflow: visible; }
 .parity-baseline {
   position: absolute; top: -3px; bottom: -3px; width: 0; transform: translateX(-50%);
-  border-left: 2px dashed var(--ink-soft); z-index: 2; pointer-events: none;
+  border-left: 2px dashed var(--ink); z-index: 2; pointer-events: none;
 }
-.parity-over { background: var(--filled); }
-.parity-under { background: var(--open); }
+.parity-target { background: var(--status-target); }
+.parity-above { background: var(--status-above); }
+.parity-below { background: var(--status-below); }
+.parity-status { font-weight: 700; }
+.status-target { color: var(--status-target); }
+.status-above { color: var(--status-above); }
+.status-below { color: var(--status-below); }
+.chart-legend {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem 1.5rem;
+  padding: 0; margin: 0 0 1rem; font-size: 0.82rem; color: var(--ink-soft);
+}
+.legend-swatch {
+  display: inline-block; width: 0.85rem; height: 0.85rem; border-radius: 3px;
+  margin-right: 0.4rem; vertical-align: -0.1rem;
+}
+.legend-target { background: var(--status-target); }
+.legend-above { background: var(--status-above); }
+.legend-below { background: var(--status-below); }
 
 /* Data table (downloadable volunteer summary) */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); }
@@ -354,6 +395,7 @@ body.modal-open { overflow: hidden; }
   .cols-3 { grid-template-columns: 1fr; }
   .stat-split { grid-template-columns: 1fr; gap: 1.5rem; }
   .chart-row { grid-template-columns: minmax(7rem, 1fr) 1.2fr auto; gap: 0.5rem; }
+  .parity-chart .chart-row { grid-template-columns: 3.5rem 1fr minmax(11rem, auto); }
   .field-row { grid-template-columns: 1fr; }
   .nav-toggle { display: block; }
   .site-nav {

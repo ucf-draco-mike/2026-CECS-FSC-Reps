@@ -29,7 +29,8 @@
     const match = checkboxes.find((c) => c.value === wanted);
     if (match) {
       match.checked = true;
-      match.closest(".check")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      match.closest(".check")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
     }
   }
 
@@ -91,7 +92,8 @@
         form.hidden = true;
         if (successEl) {
           successEl.hidden = false;
-          successEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          successEl.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
         }
       } else {
         const data = await res.json().catch(() => ({}));
