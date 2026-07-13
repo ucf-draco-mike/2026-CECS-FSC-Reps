@@ -66,10 +66,10 @@ extraScript: /assets/js/signup.js
 
   <fieldset class="field">
     <legend>Committees you're interested in <span class="req">*</span></legend>
-    <p class="hint">Select as many as you'd consider. We'll match where the need is greatest.</p>
     {% set openList = committees.committees | openCommittees %}
     {% set filledList = committees.committees | representedCommittees %}
     {% if openList | length %}
+      <p class="hint">Select as many as you'd consider. We'll match where the need is greatest.</p>
       <div class="checkgroup">
         <p class="checkgroup-title">Committees with open seats</p>
         {% for committee in openList %}
@@ -79,9 +79,15 @@ extraScript: /assets/js/signup.js
           </label>
         {% endfor %}
       </div>
+    {% else %}
+      <p class="hint">
+        Every CECS seat is currently filled for {{ site.academicYear }}. Select as many
+        committees as you'd consider — registering interest puts you first in line when a
+        seat opens mid-year or in the next recruiting cycle.
+      </p>
     {% endif %}
     <div class="checkgroup">
-      <p class="checkgroup-title">Other committees (join as backup / future openings)</p>
+      <p class="checkgroup-title">{% if openList | length %}Other committees (join as backup / future openings){% else %}All committees — register interest for future vacancies{% endif %}</p>
       {% for committee in filledList %}
         <label class="check">
           <input type="checkbox" name="committees" value="{{ committee.id }}" data-name="{{ committee.name }}" />

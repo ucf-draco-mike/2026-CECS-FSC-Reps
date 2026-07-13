@@ -20,9 +20,14 @@ title: Home
     <a class="btn btn-large btn-ghost" href="{{ '/committees/' | url }}">Browse committees</a>
   </p>
   <p class="hero-stat">
-    <strong>{{ committees.committees | length }}</strong> committees ·
-    <strong>{{ openSeats }}</strong> open CECS seat{{ 's' if openSeats != 1 }} across
-    <strong>{{ openList | length }}</strong> committee{{ 's' if openList | length != 1 }}
+    {% if openSeats %}
+      <strong>{{ committees.committees | length }}</strong> committees ·
+      <strong>{{ openSeats }}</strong> open CECS seat{{ 's' if openSeats != 1 }} across
+      <strong>{{ openList | length }}</strong> committee{{ 's' if openList | length != 1 }}
+    {% else %}
+      <strong>{{ committees.committees | length }}</strong> committees ·
+      every CECS seat filled for {{ site.academicYear }}
+    {% endif %}
   </p>
 </section>
 
@@ -68,6 +73,6 @@ title: Home
       {% endfor %}
     </div>
   {% else %}
-    <p class="empty">Every committee currently has a CECS volunteer — thank you! You can still <a href="{{ '/signup/' | url }}">add your name</a> as a backup.</p>
+    <p class="empty">Every CECS seat is filled for {{ site.academicYear }} — thank you! You can still <a href="{{ '/signup/' | url }}">register interest</a> to be first in line for future vacancies.</p>
   {% endif %}
 </section>

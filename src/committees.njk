@@ -13,8 +13,14 @@ permalink: /committees/
   <h1>CECS on Faculty Senate committees</h1>
   <p class="lede">
     Current College of Engineering and Computer Science representation for {{ committees.academicYear }}.
-    Committees with open seats need volunteers — pick any on the
-    <a href="{{ '/signup/' | url }}">volunteer form</a>. Hover a card for the quick gist,
+    {% if openSeats %}
+      Committees with open seats need volunteers — pick any on the
+      <a href="{{ '/signup/' | url }}">volunteer form</a>.
+    {% else %}
+      All CECS seats are currently filled — you can still
+      <a href="{{ '/signup/' | url }}">register interest</a> for future vacancies.
+    {% endif %}
+    Hover a card for the quick gist,
     open it for full duties, or see <a href="{{ '/how-it-works/' | url }}">how the committees fit together</a>.
     Always confirm details against the
     <a href="{{ site.committeesReferenceUrl }}" target="_blank" rel="noopener">official UCF Faculty Senate listing ↗</a>.
@@ -23,8 +29,13 @@ permalink: /committees/
 
 <section class="category">
   <div class="section-head">
-    <h2>Open seats — volunteers needed</h2>
-    <span class="muted">{{ openSeats }} seat{{ 's' if openSeats != 1 }} across {{ openList | length }} committee{{ 's' if openList | length != 1 }}</span>
+    {% if openSeats %}
+      <h2>Open seats — volunteers needed</h2>
+      <span class="muted">{{ openSeats }} seat{{ 's' if openSeats != 1 }} across {{ openList | length }} committee{{ 's' if openList | length != 1 }}</span>
+    {% else %}
+      <h2>Open seats</h2>
+      <span class="muted">none right now</span>
+    {% endif %}
   </div>
   {% if openList | length %}
     <div class="card-grid">

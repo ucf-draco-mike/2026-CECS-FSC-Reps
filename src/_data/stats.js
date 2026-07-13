@@ -198,7 +198,9 @@ export default function () {
         perSize: Math.round((b.seats / b.size) * 100) / 100,
         // Share-of-seats vs share-of-size. Rounded to 2 dp for display.
         parity: expectedSeats ? Math.round((b.seats / expectedSeats) * 100) / 100 : 0,
-        expectedSeats: Math.round(expectedSeats * 10) / 10,
+        // Whole seats only: a department can't hold a fraction of a seat, so
+        // round half-up (< .5 down, ≥ .5 up) for display.
+        expectedSeats: Math.round(expectedSeats),
         sizePct: Math.round(sizeShare * 100),
         seatPct: Math.round(seatShare * 100),
       };

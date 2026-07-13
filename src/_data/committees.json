@@ -16,11 +16,10 @@
       "id": "faculty-center-advisory",
       "name": "Faculty Center for Teaching and Learning Advisory Committee",
       "term": "3-year term",
-      "openSeats": 1,
-      "openSeatRole": "Faculty Representative",
-      "openSeatTerm": "2026-2029",
+      "openSeats": 0,
       "members": [
-        { "name": "Mike Borowczak", "department": "Electrical & Computer Engineering", "role": "Senate Representative", "term": "2024-2027" }
+        { "name": "Mike Borowczak", "department": "Electrical & Computer Engineering", "role": "Senate Representative", "term": "2024-2027" },
+        { "name": "Saleem Sahawneh", "department": "Electrical & Computer Engineering", "role": "Faculty Representative", "term": "2026-2029" }
       ],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
     },
@@ -38,30 +37,29 @@
       "id": "graduate-policy",
       "name": "Graduate Policy Committee",
       "term": "3-year term",
-      "openSeats": 1,
-      "openSeatRole": "Faculty Representative",
-      "openSeatTerm": "2026-2029",
-      "members": [],
+      "openSeats": 0,
+      "members": [
+        { "name": "Grace Fox", "department": "School of Modeling, Simulation & Training", "role": "Faculty Representative", "term": "2026-2029" }
+      ],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
     },
     {
       "id": "personnel",
       "name": "Personnel Committee",
       "term": "2-year term",
-      "openSeats": 1,
-      "openSeatRole": "Faculty Representative",
-      "openSeatTerm": "2026-2028",
-      "members": [],
+      "openSeats": 0,
+      "members": [
+        { "name": "Ser Nam Lim", "department": "Computer Science", "role": "Faculty Representative", "term": "2026-2028" }
+      ],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
     },
     {
       "id": "research-council",
       "name": "Research Council",
       "term": "3-year term",
-      "openSeats": 1,
-      "openSeatRole": "Faculty Representative",
-      "openSeatTerm": "2026-2029",
+      "openSeats": 0,
       "members": [
+        { "name": "Chinwendu Enyioha", "department": "Electrical & Computer Engineering", "role": "Faculty Representative", "term": "2026-2029" },
         { "name": "Hansen Mansy", "department": "Mechanical and Aerospace Engineering", "role": "Faculty Representative", "term": "2026-2029" },
         { "name": "Steven Duranceau", "department": "Civil, Environmental, and Construction Engineering", "role": "Senate Representative", "term": "2024-2027", "note": "Vice Chair" },
         { "name": "Soheil Sabri", "department": "Modeling and Simulation Graduate Program", "role": "Senate Representative", "term": "2025-2028" }
@@ -82,10 +80,10 @@
       "id": "university-travel-awards",
       "name": "University Travel Awards Committee",
       "term": "2-year term",
-      "openSeats": 1,
-      "openSeatRole": "Faculty Representative",
-      "openSeatTerm": "2026-2028",
-      "members": [],
+      "openSeats": 0,
+      "members": [
+        { "name": "Mengxin Zheng", "department": "Computer Science", "role": "Faculty Representative", "term": "2026-2028" }
+      ],
       "moreInfoUrl": "https://facultysenate.ucf.edu/committees/"
     },
     {
