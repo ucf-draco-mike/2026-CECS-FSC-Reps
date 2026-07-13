@@ -5,9 +5,9 @@
 // department, and by rank — and emits a flat CSV for download. Nothing here is
 // edited by hand; it always reflects signups.json + committees.json.
 //
-// Note: rank is only present for volunteers whose submission included it AND that
-// were synced after the sync script began retaining rank; older rows show as
-// "Not specified".
+// Note: rank and Faculty Senate membership are only present for volunteers whose
+// submission included them AND that were synced after the sync script began
+// retaining those fields; older rows show as "Not specified".
 
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -52,12 +52,14 @@ export default function () {
           deptAbbr: dept ? dept.abbr : "",
           deptName: dept ? dept.name : (v.department ? v.department.trim() : "Other"),
           rank: (v.rank || "").trim() || UNKNOWN_RANK,
+          senate: (v.senate || "").trim(),
           committees: [],
         });
       }
       const person = people.get(key);
-      // Backfill rank/department if an earlier row lacked it.
+      // Backfill rank/senate if an earlier row lacked it.
       if (person.rank === UNKNOWN_RANK && (v.rank || "").trim()) person.rank = v.rank.trim();
+      if (!person.senate && (v.senate || "").trim()) person.senate = v.senate.trim();
       person.committees.push(committeeName(committeeId));
     }
   }
@@ -105,7 +107,7 @@ export default function () {
     });
 
   // --- Downloadable CSV (one row per person) --------------------------------
-  const headers = ["Name", "Department", "Rank", "Committees", "Committee list"];
+  const headers = ["Name", "Department", "Rank", "Faculty Senate member", "Committees", "Committee list"];
   const lines = [headers.map(csvField).join(",")];
   for (const p of byPerson) {
     lines.push(
@@ -113,6 +115,7 @@ export default function () {
         p.name,
         p.deptName,
         p.rank,
+        p.senate || "Not specified",
         p.count,
         p.committees.join("; "),
       ]
@@ -130,6 +133,8 @@ export default function () {
       departments: byDepartment.length,
       ranks: byRank.filter((r) => r.name !== UNKNOWN_RANK).length,
       hasRanks: byRank.some((r) => r.name !== UNKNOWN_RANK),
+      senators: byPerson.filter((p) => p.senate === "Yes").length,
+      hasSenate: byPerson.some((p) => p.senate),
     },
     byPerson,
     byDepartment,

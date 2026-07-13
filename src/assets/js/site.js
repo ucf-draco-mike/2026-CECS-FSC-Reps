@@ -26,6 +26,18 @@
     if (slot) slot.textContent = ", " + name + ",";
   }
 
+  // Withdrawals (?mode=withdraw) get their own heading and body copy.
+  if (params.get("mode") === "withdraw") {
+    const tail = overlay.querySelector("[data-thanks-tail]");
+    if (tail) tail.textContent = "— your interest has been withdrawn.";
+    const emoji = overlay.querySelector("[data-thanks-emoji]");
+    if (emoji) emoji.textContent = "👋";
+    const volunteerBody = overlay.querySelector("[data-thanks-body-volunteer]");
+    if (volunteerBody) volunteerBody.hidden = true;
+    const withdrawBody = overlay.querySelector("[data-thanks-body-withdraw]");
+    if (withdrawBody) withdrawBody.hidden = false;
+  }
+
   const closeEls = overlay.querySelectorAll("#thanks-close, #thanks-dismiss");
   let lastFocused = null;
 
@@ -46,6 +58,7 @@
     const url = new URL(window.location.href);
     url.searchParams.delete("thanks");
     url.searchParams.delete("name");
+    url.searchParams.delete("mode");
     url.hash = "";
     window.history.replaceState({}, "", url.pathname + url.search);
     if (lastFocused && lastFocused.focus) lastFocused.focus();

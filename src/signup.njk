@@ -8,9 +8,12 @@ extraScript: /assets/js/signup.js
 <section class="page-head">
   <h1>Volunteer to serve</h1>
   <p class="lede">
-    Pick one or more committees and tell us a little about yourself. Your name,
-    department, and rank may appear publicly on this site to show momentum and help us
-    avoid doubling up — your email stays private and is used only by the CECS rep to follow up.
+    Pick one or more committees and tell us a little about yourself. Already signed up?
+    Submitting the form again <strong>replaces</strong> your earlier answers, so you can
+    update your selections — or withdraw entirely — at any time. Your name, department,
+    rank, and Faculty Senate status may appear publicly on this site to show momentum and
+    help us avoid doubling up — your email stays private and is used only by the CECS rep
+    to follow up.
   </p>
 </section>
 
@@ -65,11 +68,28 @@ extraScript: /assets/js/signup.js
   </div>
 
   <fieldset class="field">
+    <legend>Are you currently a member of the Faculty Senate? <span class="req">*</span></legend>
+    <p class="hint">Some seats ("Senate Representative" seats) must be held by current senators, so this helps with matching.</p>
+    <label class="check">
+      <input type="radio" name="senate" value="Yes" required />
+      <span>Yes — I currently serve on the Faculty Senate</span>
+    </label>
+    <label class="check">
+      <input type="radio" name="senate" value="No" required />
+      <span>No</span>
+    </label>
+  </fieldset>
+
+  <fieldset class="field">
     <legend>Committees you're interested in <span class="req">*</span></legend>
     {% set openList = committees.committees | openCommittees %}
     {% set filledList = committees.committees | representedCommittees %}
     {% if openList | length %}
-      <p class="hint">Select as many as you'd consider. We'll match where the need is greatest.</p>
+      <p class="hint">
+        Select as many as you'd consider — we'll match where the need is greatest. Updating
+        an earlier sign-up? Check everything you're <em>still</em> interested in; this form
+        replaces your previous selections.
+      </p>
       <div class="checkgroup">
         <p class="checkgroup-title">Committees with open seats</p>
         {% for committee in openList %}
@@ -81,19 +101,27 @@ extraScript: /assets/js/signup.js
       </div>
     {% else %}
       <p class="hint">
-        Every CECS seat is currently filled for {{ site.academicYear }}. Select as many
-        committees as you'd consider — registering interest puts you first in line when a
-        seat opens mid-year or in the next recruiting cycle.
+        Every CECS seat is currently filled for {{ site.academicYear }}. Select every committee
+        you'd consider — registering interest puts you first in line when a seat opens mid-year
+        or in the next recruiting cycle. Updating an earlier sign-up? Check everything you're
+        <em>still</em> interested in; this form replaces your previous selections.
       </p>
     {% endif %}
     <div class="checkgroup">
-      <p class="checkgroup-title">{% if openList | length %}Other committees (join as backup / future openings){% else %}All committees — register interest for future vacancies{% endif %}</p>
+      <p class="checkgroup-title">{% if openList | length %}Other committees (join as backup / future openings){% else %}All committees — register or update your interest{% endif %}</p>
       {% for committee in filledList %}
         <label class="check">
           <input type="checkbox" name="committees" value="{{ committee.id }}" data-name="{{ committee.name }}" />
           <span>{{ committee.name }}</span>
         </label>
       {% endfor %}
+    </div>
+    <div class="checkgroup">
+      <p class="checkgroup-title">No longer interested?</p>
+      <label class="check">
+        <input type="checkbox" id="withdraw" name="withdraw" value="yes" />
+        <span>Withdraw my interest — remove my earlier sign-up from all committees.</span>
+      </label>
     </div>
   </fieldset>
 

@@ -88,7 +88,7 @@ eleventyComputed:
     {% if needed > 0 %}
       <a class="btn btn-large" href="{{ ['/signup/?committee=', committee.id] | join | url }}">Volunteer for this committee</a>
     {% else %}
-      <a class="btn btn-large btn-ghost" href="{{ ['/signup/?committee=', committee.id] | join | url }}">Add your name as backup</a>
+      <a class="btn btn-large btn-ghost" href="{{ ['/signup/?committee=', committee.id] | join | url }}">Register or update your interest</a>
     {% endif %}
     {% if committee.moreInfoUrl %}
       <a class="link" href="{{ committee.moreInfoUrl }}" target="_blank" rel="noopener">Official info ↗</a>
