@@ -2,6 +2,11 @@
   "_note": "News / share-outs for CECS faculty through the year. Add a new object to the top of 'posts'. 'date' is YYYY-MM-DD. 'body' may contain basic HTML.",
   "posts": [
     {
+      "date": "2026-07-13",
+      "title": "2026–2027 committee members selected — every CECS seat is filled",
+      "body": "<p>Thank you to everyone who volunteered! Our representatives for the open 2026–2027 seats have been selected: <strong>Chinwendu Enyioha</strong> (Electrical &amp; Computer Engineering) joins the Research Council, <strong>Grace Fox</strong> (School of Modeling, Simulation &amp; Training) joins the Graduate Policy Committee, <strong>Mengxin Zheng</strong> (Computer Science) joins the University Travel Awards Committee, <strong>Ser Nam Lim</strong> (Computer Science) joins the Personnel Committee, and <strong>Saleem Sahawneh</strong> (Electrical &amp; Computer Engineering) joins the Faculty Center for Teaching and Learning Advisory Committee. See the full roster on the <a href=\"../committees/\">committees page</a>. Seats open up mid-year and again each spring — you can still <a href=\"../signup/\">register interest</a> to be first in line for future vacancies.</p>"
+    },
+    {
       "date": "2026-06-26",
       "title": "Committee recruiting for 2026–2027 is open",
       "body": "<p>We're recruiting CECS faculty to fill open Faculty Senate committee seats for the 2026–2027 year. Several committees have open seats right now — including the Faculty Center for Teaching and Learning Advisory Committee, Graduate Policy Committee, Personnel Committee, Research Council, and University Travel Awards Committee. Browse the <a href=\"../committees/\">committees</a> and add your name on the <a href=\"../signup/\">volunteer form</a>.</p>"

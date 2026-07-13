@@ -75,7 +75,7 @@ eleventyComputed:
 
   {% if interested %}
     <section class="detail-volunteers">
-      <h2>Volunteered for an open seat</h2>
+      <h2>{% if needed > 0 %}Volunteered for an open seat{% else %}Registered interest for future vacancies{% endif %}</h2>
       <ul class="volunteer-list">
         {% for v in volunteers %}
           <li><strong>{{ v.name }}</strong>{% if v.department %} <span class="muted">— {{ v.department }}</span>{% endif %}</li>
