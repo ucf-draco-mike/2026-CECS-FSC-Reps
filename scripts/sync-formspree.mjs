@@ -4,8 +4,12 @@
  *
  * Pulls volunteer submissions from the Formspree read-only API and writes a
  * privacy-filtered JSON file the site reads. ONLY public fields (name,
- * department, rank) are written; email, notes, and metadata are intentionally
- * dropped.
+ * department, rank, Faculty Senate membership) are written; email, notes, and
+ * metadata are intentionally dropped.
+ *
+ * One entry per person — the LATEST submission wins. Re-submitting the form
+ * replaces a volunteer's earlier committee selections, and a submission with
+ * the withdraw box checked removes them from every committee list.
  *
  * Environment:
  *   FORMSPREE_API_KEY   (required) read-only API key, provided as a repo secret
@@ -50,6 +54,29 @@ function field(sub, ...names) {
     }
   }
   return "";
+}
+
+/** Truthiness of checkbox-ish fields ("yes", "on", "true", "1"). */
+function checked(value) {
+  return /^(y|yes|on|true|1)$/i.test(String(value || "").trim());
+}
+
+/** Normalise the Faculty Senate answer to "Yes" / "No" / "" (not answered). */
+function senateValue(sub) {
+  const raw = String(field(sub, "senate", "faculty senate", "senate member") || "").trim();
+  if (/^y/i.test(raw)) return "Yes";
+  if (/^n/i.test(raw)) return "No";
+  return "";
+}
+
+/**
+ * Submission timestamp, for picking a person's most recent submission.
+ * Returns null when the API row carries no parseable date.
+ */
+function submittedAt(sub) {
+  const raw = field(sub, "_date", "date", "created_at", "_created_at");
+  const t = Date.parse(raw);
+  return Number.isNaN(t) ? null : t;
 }
 
 /** Normalise the committees field of a submission into an array of values. */
@@ -120,30 +147,45 @@ async function main() {
   const index = await loadCommitteeIndex();
   const submissions = await fetchSubmissions();
 
-  const byCommittee = {};
-  const seen = new Set(); // dedupe key: committeeId|lowercased name
-  let counted = 0;
-
+  // Collapse to one submission per person — the LATEST wins — so re-submitting
+  // the form updates (replaces) earlier interest instead of accumulating it.
+  // The API returns submissions newest-first, so when a row carries no parseable
+  // date the first submission seen for a person is treated as their latest.
+  const latest = new Map(); // lowercased name -> { sub, name, at }
   for (const sub of submissions) {
     const name = String(field(sub, "name", "full name", "_name") || "").trim();
     if (!name) continue;
+    const key = name.toLowerCase();
+    const at = submittedAt(sub);
+    const prev = latest.get(key);
+    if (!prev || (at != null && prev.at != null && at > prev.at)) {
+      latest.set(key, { sub, name, at });
+    }
+  }
+
+  const byCommittee = {};
+  let counted = 0;
+  let withdrawn = 0;
+
+  for (const { sub, name } of latest.values()) {
+    // A withdrawal removes the person from every committee list.
+    if (checked(field(sub, "withdraw", "no longer interested"))) {
+      withdrawn++;
+      continue;
+    }
     const department = String(field(sub, "department", "school", "unit") || "").trim();
     const rank = String(field(sub, "rank", "title", "rank / title") || "").trim();
-    const values = committeeValues(sub);
-    let matchedAny = false;
+    const senate = senateValue(sub);
+    const ids = [
+      ...new Set(committeeValues(sub).map((v) => resolveCommitteeId(v, index)).filter(Boolean)),
+    ];
+    if (!ids.length) continue;
 
-    for (const value of values) {
-      const id = resolveCommitteeId(value, index);
-      if (!id) continue;
-      const key = `${id}|${name.toLowerCase()}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      const record = { name, department };
-      if (rank) record.rank = rank;
-      (byCommittee[id] ||= []).push(record);
-      matchedAny = true;
-    }
-    if (matchedAny) counted++;
+    const record = { name, department };
+    if (rank) record.rank = rank;
+    if (senate) record.senate = senate;
+    for (const id of ids) (byCommittee[id] ||= []).push(record);
+    counted++;
   }
 
   // Stable ordering for clean diffs.
@@ -155,7 +197,7 @@ async function main() {
 
   const output = {
     _note:
-      "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department + rank are stored (no emails).",
+      "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department + rank + Faculty Senate membership are stored (no emails). One entry per person: the latest submission wins, so re-submitting updates or withdraws earlier interest.",
     generatedAt: new Date().toISOString(),
     totalSubmissions: counted,
     byCommittee: sorted,
@@ -163,7 +205,8 @@ async function main() {
 
   await writeFile(OUTPUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
   console.log(
-    `Wrote ${OUTPUT_PATH} — ${counted} volunteer submission(s) across ${Object.keys(sorted).length} committee(s).`
+    `Wrote ${OUTPUT_PATH} — ${counted} active volunteer(s) across ${Object.keys(sorted).length} committee(s)` +
+      (withdrawn ? `, ${withdrawn} withdrawn.` : ".")
   );
 }
 

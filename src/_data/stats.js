@@ -167,9 +167,11 @@ export default function () {
   // --- Representation normalized by department size ----------------------
   // Bigger departments are expected to hold proportionally more seats. We map
   // every filled seat and every volunteer to one of the seven sized CECS units,
-  // then compare each unit's *share of seats* to its *share of faculty size*.
-  // parity = seatShare / sizeShare: 1.0 is exactly proportional, <1 is
-  // under-represented for its size, >1 is over-represented.
+  // then compare each unit's seats to its whole-seat target (proportional share
+  // rounded half-up). parity = seats / expected: 1.0 means the unit holds
+  // exactly its target, <1 under-represented, >1 over-represented. status
+  // buckets that for display: holding the target (or one seat over) is
+  // "target"; more than one over is "above"; fewer than the target is "below".
   const sizeBuckets = new Map(
     DEPARTMENTS.map((d) => [d.key, { ...d, seats: 0, volunteerPeople: new Set() }])
   );
@@ -182,11 +184,22 @@ export default function () {
     if (dept && v.name) sizeBuckets.get(dept.key).volunteerPeople.add(v.name.toLowerCase());
   }
   const classifiedSeats = [...sizeBuckets.values()].reduce((m, b) => m + b.seats, 0);
+  const STATUS_LABELS = {
+    below: "Below target",
+    target: "At target",
+    above: "Above target",
+  };
   const byNormalizedSize = [...sizeBuckets.values()]
     .map((b) => {
       const sizeShare = b.size / TOTAL_SIZE;
       const seatShare = classifiedSeats ? b.seats / classifiedSeats : 0;
-      const expectedSeats = classifiedSeats * sizeShare;
+      // Whole seats only: a department can't hold a fraction of a seat, so the
+      // target is the proportional share rounded half-up (< .5 down, ≥ .5 up).
+      const expectedSeats = Math.round(classifiedSeats * sizeShare);
+      // Hitting the target exactly — or holding one extra seat — counts as at
+      // target; more than one over is above; fewer than the target is below.
+      const status =
+        b.seats < expectedSeats ? "below" : b.seats <= expectedSeats + 1 ? "target" : "above";
       return {
         key: b.key,
         abbr: b.abbr,
@@ -196,11 +209,12 @@ export default function () {
         volunteers: b.volunteerPeople.size,
         // Seats per unit of department size — the "representation rate".
         perSize: Math.round((b.seats / b.size) * 100) / 100,
-        // Share-of-seats vs share-of-size. Rounded to 2 dp for display.
+        // Seats vs the whole-seat target, so a department at its target lands
+        // exactly on the 1.0× line. Rounded to 2 dp for display.
         parity: expectedSeats ? Math.round((b.seats / expectedSeats) * 100) / 100 : 0,
-        // Whole seats only: a department can't hold a fraction of a seat, so
-        // round half-up (< .5 down, ≥ .5 up) for display.
-        expectedSeats: Math.round(expectedSeats),
+        expectedSeats,
+        status,
+        statusLabel: STATUS_LABELS[status],
         sizePct: Math.round(sizeShare * 100),
         seatPct: Math.round(seatShare * 100),
       };

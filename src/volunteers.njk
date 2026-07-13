@@ -42,20 +42,28 @@ permalink: /volunteers/
       <span class="stat-label">Distinct rank{{ 's' if t.ranks != 1 }}</span>
     </div>
   {% endif %}
+  {% if t.hasSenate %}
+    <div class="stat-card">
+      <span class="stat-num">{{ t.senators }}</span>
+      <span class="stat-label">Current senator{{ 's' if t.senators != 1 }}</span>
+    </div>
+  {% endif %}
 </section>
 
 <section>
   <div class="section-head">
     <h2>By person</h2>
-    <a class="btn btn-small" href="{{ '/volunteer-summary.csv' | url }}" download="cecs-volunteer-summary.csv">⬇ Download CSV</a>
+    <a class="btn btn-small" href="{{ '/volunteer-summary.csv' | url }}" download="cecs-volunteer-summary.csv"><span aria-hidden="true">⬇</span> Download CSV</a>
   </div>
   <div class="table-wrap">
     <table class="data-table">
+      <caption class="sr-only">Volunteers by person: department, rank, and committee selections</caption>
       <thead>
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Department</th>
           <th scope="col">Rank</th>
+          {% if t.hasSenate %}<th scope="col">Senate member</th>{% endif %}
           <th scope="col" class="num">Committees</th>
           <th scope="col">Committee list</th>
         </tr>
@@ -66,6 +74,7 @@ permalink: /volunteers/
             <th scope="row">{{ p.name }}</th>
             <td>{% if p.deptAbbr %}<abbr title="{{ p.deptName }}">{{ p.deptAbbr }}</abbr>{% else %}{{ p.deptName }}{% endif %}</td>
             <td>{% if p.rank == "Not specified" %}<span class="muted">{{ p.rank }}</span>{% else %}{{ p.rank }}{% endif %}</td>
+            {% if t.hasSenate %}<td>{% if p.senate %}{{ p.senate }}{% else %}<span class="muted">Not specified</span>{% endif %}</td>{% endif %}
             <td class="num">{{ p.count }}</td>
             <td class="committee-cell">{{ p.committees | join(', ') }}</td>
           </tr>
@@ -83,7 +92,7 @@ permalink: /volunteers/
       {% for d in volunteerStats.byDepartment %}
         <div class="chart-row">
           <span class="chart-label" title="{{ d.name }}">{{ d.abbr or d.name }}</span>
-          <span class="chart-track">
+          <span class="chart-track" aria-hidden="true">
             <span class="chart-bar" style="width: {{ d.people | barPct(volunteerStats.maxDeptPeople) }}%"></span>
           </span>
           <span class="chart-value">
@@ -113,10 +122,12 @@ permalink: /volunteers/
 </section>
 
 <section class="band">
-  <h2>Add your name</h2>
+  <h2>Add your name — or update it</h2>
   <p>
     The more CECS faculty volunteer, the stronger our voice across the Faculty Senate.
-    Signing up takes a couple of minutes, and you can pick as many committees as you'd consider.
+    Signing up takes a couple of minutes, and you can pick as many committees as you'd
+    consider. Already on this list? Submitting the form again updates your choices — or
+    withdraws your name if you're no longer interested.
   </p>
   <p class="hero-actions">
     <a class="btn btn-large" href="{{ '/signup/' | url }}">Volunteer</a>
@@ -126,5 +137,5 @@ permalink: /volunteers/
 {% endif %}
 
 {% if volunteerStats.generatedAt %}
-  <p class="muted">Volunteer figures last synced {{ volunteerStats.generatedAt | readableDate }}. Only public fields (name, department, rank) are shown; emails and notes are never published.</p>
+  <p class="muted">Volunteer figures last synced {{ volunteerStats.generatedAt | readableDate }}. Only public fields (name, department, rank, Faculty Senate membership) are shown; emails and notes are never published. Figures reflect each volunteer's most recent submission.</p>
 {% endif %}

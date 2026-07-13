@@ -8,6 +8,19 @@
   const errorEl = document.getElementById("form-error");
   const namesField = document.getElementById("committee_names");
   const checkboxes = Array.from(form.querySelectorAll('input[name="committees"]'));
+  const withdrawBox = document.getElementById("withdraw");
+
+  // Withdrawing replaces committee selection: clear and lock the committee
+  // checkboxes while the withdraw box is checked (disabled inputs don't submit).
+  if (withdrawBox) {
+    withdrawBox.addEventListener("change", function () {
+      checkboxes.forEach((c) => {
+        if (withdrawBox.checked) c.checked = false;
+        c.disabled = withdrawBox.checked;
+      });
+      if (errorEl) errorEl.hidden = true;
+    });
+  }
 
   // Pre-check the committee passed in the query string and scroll it into view.
   const params = new URLSearchParams(window.location.search);
@@ -16,7 +29,8 @@
     const match = checkboxes.find((c) => c.value === wanted);
     if (match) {
       match.checked = true;
-      match.closest(".check")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      match.closest(".check")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
     }
   }
 
@@ -27,18 +41,22 @@
   }
 
   form.addEventListener("submit", async function (e) {
-    // Require at least one committee selection.
+    // Require at least one committee selection — unless the volunteer is
+    // withdrawing their earlier interest, which needs no committees.
+    const withdrawing = Boolean(withdrawBox && withdrawBox.checked);
     const selected = checkboxes.filter((c) => c.checked);
-    if (selected.length === 0) {
+    if (selected.length === 0 && !withdrawing) {
       e.preventDefault();
-      showError("Please select at least one committee.");
+      showError("Please select at least one committee, or check the withdraw box to remove your earlier sign-up.");
       return;
     }
     if (errorEl) errorEl.hidden = true;
 
     // Mirror selected committee names into a readable hidden field for the dashboard.
     if (namesField) {
-      namesField.value = selected.map((c) => c.dataset.name || c.value).join(", ");
+      namesField.value = withdrawing
+        ? "None — withdrawing earlier interest"
+        : selected.map((c) => c.dataset.name || c.value).join(", ");
     }
 
     // Progressive enhancement: if fetch is available, submit via AJAX.
@@ -66,6 +84,7 @@
           const firstName = (form.querySelector("#name")?.value || "").trim().split(/\s+/)[0];
           const url = new URL(next, window.location.origin);
           if (firstName) url.searchParams.set("name", firstName);
+          if (withdrawing) url.searchParams.set("mode", "withdraw");
           window.location.assign(url.toString());
           return;
         }
@@ -73,7 +92,8 @@
         form.hidden = true;
         if (successEl) {
           successEl.hidden = false;
-          successEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          successEl.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
         }
       } else {
         const data = await res.json().catch(() => ({}));

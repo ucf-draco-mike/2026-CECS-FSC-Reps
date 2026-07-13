@@ -53,7 +53,7 @@ permalink: /stats/
       {% for d in stats.byDepartment %}
         <div class="chart-row">
           <span class="chart-label" title="{{ d.name }}">{{ d.name }}</span>
-          <span class="chart-track">
+          <span class="chart-track" aria-hidden="true">
             <span class="chart-bar" style="width: {{ d.seats | barPct(stats.maxDeptSeats) }}%"></span>
           </span>
           <span class="chart-value">
@@ -77,29 +77,35 @@ permalink: /stats/
   <p class="category-blurb">
     Raw seat counts favor large departments. These bars normalize by department size
     (ECE&nbsp;=&nbsp;CS&nbsp;=&nbsp;MAE&nbsp;&gt;&nbsp;CECE&nbsp;=&nbsp;IEMS&nbsp;&gt;&nbsp;MSE&nbsp;=&nbsp;SMST):
-    a <strong>parity index</strong> compares each unit's share of CECS seats to its share of
-    faculty size. <strong>1.0&times;</strong> is exactly proportional — below that a department
-    is under-represented for its size and is a natural recruiting target.
+    each unit gets a whole-seat <strong>target</strong> — its proportional share of the filled
+    seats — and the bar shows how close it is. A department holding exactly its target
+    (or one extra seat) is <strong>at target</strong> and lands on the dashed line;
+    below-target departments are natural recruiting targets.
   </p>
+  <ul class="chart-legend">
+    <li><span class="legend-swatch legend-target" aria-hidden="true"></span>At target — expected seats, or one over</li>
+    <li><span class="legend-swatch legend-above" aria-hidden="true"></span>Above target — more than one seat over</li>
+    <li><span class="legend-swatch legend-below" aria-hidden="true"></span>Below target — fewer than expected</li>
+  </ul>
   <div class="chart parity-chart">
     {% for d in stats.byNormalizedSize %}
       <div class="chart-row">
         <span class="chart-label" title="{{ d.name }}">{{ d.abbr }}</span>
-        <span class="chart-track parity-track">
-          <span class="parity-baseline" aria-hidden="true" style="left: {{ 1 | barPct(stats.maxParity) }}%"></span>
-          <span class="chart-bar {% if d.parity < 1 %}parity-under{% else %}parity-over{% endif %}" style="width: {{ d.parity | barPct(stats.maxParity) }}%"></span>
+        <span class="chart-track parity-track" aria-hidden="true">
+          <span class="parity-baseline" style="left: {{ 1 | barPct(stats.maxParity) }}%"></span>
+          <span class="chart-bar parity-{{ d.status }}" style="width: {{ d.parity | barPct(stats.maxParity) }}%"></span>
         </span>
         <span class="chart-value">
           {{ d.parity }}&times;
-          <small>{{ d.seats }} of {{ d.expectedSeats }} expected · size {{ d.size }}{% if d.volunteers %} · {{ d.volunteers }} volunteered{% endif %}</small>
+          <small><strong class="parity-status status-{{ d.status }}">{{ d.statusLabel }}</strong> · {{ d.seats }} of {{ d.expectedSeats }} expected · size {{ d.size }}{% if d.volunteers %} · {{ d.volunteers }} volunteered{% endif %}</small>
         </span>
       </div>
     {% endfor %}
   </div>
   <p class="hint">
-    Parity index = (department's share of filled seats) ÷ (department's share of faculty size).
-    The dashed line marks 1.0× parity. "Expected" seats are what perfectly proportional
-    representation would give each unit at the current total, rounded to the nearest whole seat.
+    Parity index = filled seats ÷ expected seats, where "expected" is the department's
+    proportional share of all filled seats rounded to the nearest whole seat. The dashed
+    line marks the 1.0× target — a department at its target lands exactly on the line.
   </p>
 </section>
 
@@ -140,7 +146,7 @@ permalink: /stats/
       {% for y in stats.termTimeline %}
         <div class="chart-row">
           <span class="chart-label">{{ y.year }}</span>
-          <span class="chart-track">
+          <span class="chart-track" aria-hidden="true">
             <span class="chart-bar chart-bar-alt" style="width: {{ y.count | barPct(stats.maxTimeline) }}%"></span>
           </span>
           <span class="chart-value">{{ y.count }} seat{{ 's' if y.count != 1 }}</span>

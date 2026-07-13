@@ -17,19 +17,34 @@
     aria-describedby="thanks-body"
   >
     <button type="button" class="thanks-close" id="thanks-close" aria-label="Close">&times;</button>
-    <p class="thanks-emoji" aria-hidden="true">🎉</p>
-    <h2 id="thanks-title" class="thanks-title">Thank you<span data-thanks-name></span> for volunteering!</h2>
+    <p class="thanks-emoji" aria-hidden="true" data-thanks-emoji>🎉</p>
+    <h2 id="thanks-title" class="thanks-title">Thank you<span data-thanks-name></span> <span data-thanks-tail>for volunteering!</span></h2>
     <div id="thanks-body" class="thanks-body">
-      <p>
-        Your interest has been recorded and sent to the CECS Faculty Senate rep,
-        <a href="mailto:{{ site.contactEmail }}">{{ site.contactName }}</a>, who compiles
-        volunteers and coordinates nominations. Expect a follow-up about next steps.
-      </p>
-      <p class="muted">
-        Your name will appear on the committee pages after the next data sync. While
-        you're here, take a look at how the committees connect and where {{ site.college }}
-        is working to have a voice.
-      </p>
+      {# Default (register/update) copy. Swapped for the withdraw copy by site.js
+         when the page is loaded with ?mode=withdraw. #}
+      <div data-thanks-body-volunteer>
+        <p>
+          Your interest has been recorded and sent to the CECS Faculty Senate rep,
+          <a href="mailto:{{ site.contactEmail }}">{{ site.contactName }}</a>, who compiles
+          volunteers and coordinates nominations. Expect a follow-up about next steps.
+        </p>
+        <p class="muted">
+          Your name will appear on the committee pages after the next data sync — submitting
+          again later updates your answers. While you're here, take a look at how the
+          committees connect and where {{ site.college }} is working to have a voice.
+        </p>
+      </div>
+      <div data-thanks-body-withdraw hidden>
+        <p>
+          Got it — your withdrawal has been recorded, and your earlier sign-up will be
+          removed from the committee pages after the next data sync. Thanks for letting
+          us know.
+        </p>
+        <p class="muted">
+          Changed your mind? You can register interest again on the
+          <a href="{{ '/signup/' | url }}">volunteer form</a> at any time.
+        </p>
+      </div>
     </div>
     <p class="thanks-actions">
       <a class="btn" href="{{ '/committees/' | url }}">Browse committees</a>

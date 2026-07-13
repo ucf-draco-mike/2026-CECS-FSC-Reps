@@ -111,9 +111,12 @@ and safe to ship; the API key must stay secret.
 2. **Sync Formspree submissions** runs on a schedule (06:00 & 18:00 UTC) or on demand
    via the Actions tab. It calls `scripts/sync-formspree.mjs`, which:
    - fetches submissions with the read-only API key,
+   - keeps **one entry per person — the latest submission wins**, so re-submitting the
+     form updates (replaces) earlier committee selections, and a submission with the
+     withdraw box checked removes the person from every list,
    - matches each selected committee to a committee `id`,
-   - writes **only name + department** to `src/_data/signups.json`
-     (emails, notes, and metadata are intentionally dropped), and
+   - writes **only name + department + rank + Faculty Senate membership** to
+     `src/_data/signups.json` (emails, notes, and metadata are intentionally dropped), and
    - commits the file if it changed.
 3. The same workflow then rebuilds and redeploys the site, so committee pages show the
    updated volunteer lists.
@@ -127,6 +130,8 @@ npm run build
 
 ## Privacy
 
-Volunteers' **name and department appear publicly** on committee pages (to show momentum
-and avoid duplicate sign-ups). **Email and notes are never published** — they live only
-in Formspree for the CECS rep to follow up.
+Volunteers' **name, department, rank, and Faculty Senate membership appear publicly** on
+committee pages (to show momentum and avoid duplicate sign-ups). **Email and notes are
+never published** — they live only in Formspree for the CECS rep to follow up. Only a
+volunteer's most recent submission is published: re-submitting updates their earlier
+answers, and a withdrawal removes them from the public lists at the next sync.
