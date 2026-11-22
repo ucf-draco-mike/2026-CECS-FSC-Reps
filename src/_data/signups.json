@@ -1,6 +1,6 @@
 {
   "_note": "GENERATED FILE — do not edit by hand. Produced by scripts/sync-formspree.mjs from Formspree submissions. Only name + department + rank + Faculty Senate membership are stored (no emails). One entry per person: the latest submission wins, so re-submitting updates or withdraws earlier interest.",
-  "generatedAt": "2026-11-22T14:24:08.765Z",
+  "generatedAt": "2026-11-22T23:28:31.833Z",
   "totalSubmissions": 17,
   "byCommittee": {
     "admissions-standards": [
